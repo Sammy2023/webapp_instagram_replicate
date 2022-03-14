@@ -1,9 +1,13 @@
 import React from 'react';
 
 export default function Navbar(){
-  return <na>
+  function handleClick(page){
+    
+  }
+  
+  return <nav>
     <div>
       <img src="">
     </div>
-  </na>
+  </nav>
 }

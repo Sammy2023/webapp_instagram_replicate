@@ -9,15 +9,26 @@ import css from "./styles/App.module.css"
 import Seo from './components/seo.jsx';
 
 // App function that is reflected across the site
-export default function App() {
-  return (
-    <>
-      <Seo />
-      <div className={css.container}>
-        <main role="main" className="wrapper">
-          Boston College React Template         
-        </main>
-      </div>
-    </>
+export default class App extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  
+  setPage(page){
+    this.setState({
+      page
+    });
+  }
+  render(){
+    return (
+      <>
+        <Seo />
+        <div className={css.container}>
+          <main role="main" className="wrapper">
+            Boston College React Template         
+          </main>
+        </div>
+      </>
   );
+  }
 }
