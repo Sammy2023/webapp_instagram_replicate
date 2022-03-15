@@ -30,9 +30,8 @@ export default class App extends React.Component{
         <Seo />
         <div className={css.container}>
           <main role="main" className="wrapper">
-            <Home/>        
+            <Home/>     
           </main>
-          <Navbar/>
         </div>
       </>
   );
