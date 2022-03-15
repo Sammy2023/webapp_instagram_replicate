@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar.jsx";
 import Home from "./components/Home.jsx";
+import Header from "./components/Header.jsx";
 
 
 // Import and apply global CSS stylesheet
