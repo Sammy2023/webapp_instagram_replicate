@@ -32,6 +32,7 @@ export default class App extends React.Component{
           <main role="main" className="wrapper">
             <Home/>     
           </main>
+          <Navbar/>
         </div>
       </>
   );

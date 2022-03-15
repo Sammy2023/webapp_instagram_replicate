@@ -18,6 +18,21 @@ export default function Navbar(){
         <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/explore.svg?v=1647286962718"/>
       </button>
     </div>
+    <div className={css.navItem}>
+      <button>
+        <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/newpost.svg?v=1647287005893"/>
+      </button>
+    </div>
+    <div className={css.navItem}>
+      <button>
+        <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/like.svg?v=1647287005893"/>
+      </button>
+    </div>
+    <div className={css.navItem}>
+      <button>
+        <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/profile.svg?v=1647287005893"/>
+      </button>
+    </div>
   </nav>
   );
 }
