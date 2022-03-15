@@ -5,9 +5,10 @@ export default function Navbar(){
     
   }
   
-  return <nav>
+  return (<nav>
     <div>
-      <img src="">
+      Navbar
     </div>
   </nav>
+  );
 }

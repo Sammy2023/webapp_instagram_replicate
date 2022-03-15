@@ -1,7 +1,11 @@
 import React from "react";
+import Navbar from "./components/Navbar.jsx";
+import Home from "./components/Home.jsx";
+
 
 // Import and apply global CSS stylesheet
 import "./styles/styles.css";
+
 // Import and apply App specific css
 import css from "./styles/App.module.css"
 
@@ -26,8 +30,9 @@ export default class App extends React.Component{
         <Seo />
         <div className={css.container}>
           <main role="main" className="wrapper">
-            Boston College React Template         
+            <Home/>        
           </main>
+          <Navbar/>
         </div>
       </>
   );
