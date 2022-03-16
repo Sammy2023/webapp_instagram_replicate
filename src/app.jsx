@@ -17,7 +17,9 @@ import Seo from './components/seo.jsx';
 export default class App extends React.Component{
   constructor(props){
     super(props);
-    this.state = {}
+    this.state = {
+      page: "home"
+    }
   }
   
   setPage(page){
