@@ -10,7 +10,7 @@ function Home() {
     post:{
       id:"post-1",
       userId:"judy",
-      photo:"/assets/post1.png",
+      photo:"https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/post1.png?v=1647287012210",
       desc:"#zootopia #excited",
       datetime: "2020-02-09T22:45:28Z"
     },
