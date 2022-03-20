@@ -3,7 +3,7 @@ import css from '../styles/Navbar.module.css';
 
 export default function Navbar(){
   function handleNavChange(page){
-    
+    console.log(page)
   }
   
   return (
