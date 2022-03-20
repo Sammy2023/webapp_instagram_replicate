@@ -29,6 +29,15 @@ export default class App extends React.Component{
     });
   }
   
+  renderMain(page){
+    switch(page){
+      case "home": return <Home/>;
+      case "explore": return </>;
+      case "newpost": return <Home/>;
+      case "like": return <Home/>;
+      case "profile": return <Home/>;
+    }
+  }
   render(){
     return (
       <>
