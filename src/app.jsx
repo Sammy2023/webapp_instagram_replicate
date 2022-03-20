@@ -25,9 +25,10 @@ export default class App extends React.Component{
   setPage(page){
     console.log("child called me with", page);
     this.setState({
-      page
+      page: page
     });
   }
+  
   render(){
     return (
       <>
