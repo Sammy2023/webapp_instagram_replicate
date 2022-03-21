@@ -5,7 +5,7 @@ function Home() {
   const post ={
     user:{
       id:"judy",
-      photo:"/assets/user1.png",
+      photo:"https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/user1.png?v=1647287055846",
     },
     post:{
       id:"post-1",
