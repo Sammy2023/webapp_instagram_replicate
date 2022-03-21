@@ -13,7 +13,12 @@ function Post(props){
     <div>
       <div>
         <img src={user.photo}/>
-        {user.id}
+        <div>
+          {user.id}
+        </div>
+      </div>
+      <div>
+        <img src={post.photo}/>
       </div>
       <div>
         <img src={likeIcon} />
@@ -26,9 +31,6 @@ function Post(props){
         <ul>
           {commentList}
         </ul>
-      </div>
-      <div>
-        <img src={post.photo}/>
       </div>
     </div>
   );
