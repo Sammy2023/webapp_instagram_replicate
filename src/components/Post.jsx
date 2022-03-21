@@ -2,8 +2,13 @@ import React from 'react';
 
 function Post(props){
   console.log(props.post);
-  const {user, post, likes} = props;
+  const {user, post, likes, comments} = props;
   const likeIcon = likes.self ? "https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/unlike.svg?v=1647287055039" : "https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/like.svg?v=1647286978336";
+  const commentList = comments.map((comment) => 
+     <li key={comment.toString}>
+      {comment.userId} {comment.text}
+     </li>
+  );
   return (
     <div>
       <div>
@@ -16,6 +21,11 @@ function Post(props){
       </div>
       <div>
         {likes.count} Likes
+      </div>
+      <div> 
+        <ul>
+          {commentList}
+        </ul>
       </div>
       <div>
         <img src={post.photo}/>
