@@ -22,7 +22,7 @@ export default class App extends React.Component{
   constructor(props){
     super(props);
     //bind setPage 
-    this.setPage = this.setPage.bind(this);
+    // this.setPage = this.setPage.bind(this);
     this.state = {
       page: "home"
     }
@@ -30,6 +30,7 @@ export default class App extends React.Component{
   
   setPage(page){
     console.log("child called me with", page);
+    console.log(this);
     this.setState({page: page});
   }
   
