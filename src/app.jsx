@@ -2,6 +2,10 @@ import React from "react";
 import Navbar from "./components/Navbar.jsx";
 import Home from "./components/Home.jsx";
 import Header from "./components/Header.jsx";
+import Activity from "./components/Activity.jsx";
+import Explore from "./components/Explore.jsx";
+import Post from "./components/Post.jsx";
+import Profile from "./components/Profile.jsx";
 
 
 // Import and apply global CSS stylesheet
@@ -32,10 +36,10 @@ export default class App extends React.Component{
   renderMain(page){
     switch(page){
       case "home": return <Home/>;
-      case "explore": return </>;
-      case "newpost": return <Home/>;
-      case "like": return <Home/>;
-      case "profile": return <Home/>;
+      case "explore": return <Explore/>;
+      case "newpost": return <NewPost/>;
+      case "like": return <Activity/>;
+      case "profile": return <Profile/>;
     }
   }
   render(){
