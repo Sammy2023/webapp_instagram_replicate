@@ -1,9 +1,9 @@
 import React from 'react';
 import css from '../styles/Navbar.module.css';
 
-export default function Navbar(){
+function Navbar(){
   function handleNavChange(page){
-    console.log(page)
+    
   }
   
   return (
@@ -36,3 +36,5 @@ export default function Navbar(){
   </nav>
   );
 }
+
+export default Navbar;

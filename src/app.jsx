@@ -47,11 +47,11 @@ export default class App extends React.Component{
       <>
         <Seo />
         <div className={css.container}>
+          <Header/>
           <main role="main" className="wrapper">
-            <Header/>
-            <Home/>     
+            {this.renderMain(this.state.page)}
           </main>
-          <Navbar/>
+          <Navbar handleNavChange={this.setPage}/>
         </div>
       </>
   );
