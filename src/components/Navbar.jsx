@@ -1,9 +1,11 @@
 import React from 'react';
 import css from '../styles/Navbar.module.css';
 
-function Navbar(){
+function Navbar(props){
   function handleNavChange(page){
-    
+    if (props.handleNavChange) {
+        props.handleNavChange(page);
+    }
   }
   
   return (

@@ -21,6 +21,8 @@ import Seo from './components/seo.jsx';
 export default class App extends React.Component{
   constructor(props){
     super(props);
+    //bind setPage 
+    this.setPage = this.setPage.bind(this);
     this.state = {
       page: "home"
     }
@@ -28,9 +30,7 @@ export default class App extends React.Component{
   
   setPage(page){
     console.log("child called me with", page);
-    this.setState({
-      page: page
-    });
+    this.setState({page: page});
   }
   
   renderMain(page){
