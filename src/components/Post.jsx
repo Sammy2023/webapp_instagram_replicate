@@ -1,4 +1,5 @@
 import React from 'react';
+import css from "./styles/Post.module.css";
 
 function Post(props){
   console.log(props.post);
@@ -11,23 +12,23 @@ function Post(props){
   );
   return (
     <div>
-      <div>
+      <div  className={css.userBar}>
         <img src={user.photo}/>
         <div>
           {user.id}
         </div>
       </div>
-      <div>
+      <div className={css.postPhoto}>
         <img src={post.photo}/>
       </div>
-      <div>
+      <div className={css.likeAndComment}>
         <img src={likeIcon} />
         <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/comment.svg?v=1647286950412"/> 
       </div>
-      <div>
+      <div className={css.likeCount}>
         {likes.count} Likes
       </div>
-      <div> 
+      <div className={css.commentlist}> 
         <ul>
           {commentList}
         </ul>
