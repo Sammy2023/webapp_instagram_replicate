@@ -1,9 +1,11 @@
 import React from 'react';
 import css from "../styles/Post.module.css";
+import timestamp from "../util/timespan.js"
 
 function Post(props){
   const {user, post, likes, comments} = props;
   const likeIcon = likes.self ? "https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/unlike.svg?v=1647287055039" : "https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/like.svg?v=1647286978336";
+  console.log(timestamp(post.datetime));
   const commentList = comments.map((comment) => 
      <li key={comment.userId}>
       <b>{comment.userId}</b> {comment.text}
@@ -35,6 +37,9 @@ function Post(props){
           <ul>
             {commentList}
           </ul>
+        </div>
+        <div>
+          {timestamp(post.datetime)}
         </div>
       </div>
     </div>
