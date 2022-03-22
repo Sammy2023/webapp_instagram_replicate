@@ -19,9 +19,6 @@ function Post(props){
       </div>
       <div className={css.postPhoto}>
         <img src={post.photo}/>
-        <div>
-        </div>
-        
       </div>
       <div className={css.reactionBox}>
         <div className={css.likeAndComment}>
@@ -30,6 +27,9 @@ function Post(props){
         </div>
         <div className={css.likeCount}>
           {likes.count} Likes
+        </div>
+       <div>
+          <b>{post.userId}</b> {post.desc}
         </div>
         <div className={css.commentlist}> 
           <ul>
