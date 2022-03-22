@@ -1,0 +1,17 @@
+.userBar{
+  display: flex;
+  justify-content: left; 
+  align-items: center;
+  margin: 15px;
+}
+
+
+.userBar > img{
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.userBar > div{
+  font-weight: bold;
+}
