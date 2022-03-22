@@ -24,8 +24,8 @@ function Home() {
         text:"Welcome to Zootopia!"
       },
       {
-          userId:"judy",
-          text:"Thanks!😁Looking forward to meeting you!"
+        userId:"judy",
+        text:"Thanks!😁Looking forward to meeting you!"
       }
     ]
   };
