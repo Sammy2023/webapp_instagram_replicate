@@ -46,6 +46,7 @@ export default class App extends React.Component{
   render(){
     return (
       <>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <Seo />
         <div className={css.container}>
           <Header/>

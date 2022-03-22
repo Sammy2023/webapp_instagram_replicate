@@ -12,7 +12,7 @@ function Post(props){
      </li>
   );
   return (
-    <div>
+    <div clasName={css.postContainer}>
       <div  className={css.userBar}>
         <img src={user.photo}/>
         <div>
