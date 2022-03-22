@@ -28,7 +28,7 @@ function Post(props){
           <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/comment.svg?v=1647286950412"/> 
         </div>
         <div className={css.likeCount}>
-          {likes.count} Likes
+          <b> {likes.count} likes</b>
         </div>
        <div>
           <b>{post.userId}</b> {post.desc}
@@ -38,7 +38,7 @@ function Post(props){
             {commentList}
           </ul>
         </div>
-        <div>
+        <div className={css.timeStamp}> 
           {timestamp(post.datetime)}
         </div>
       </div>

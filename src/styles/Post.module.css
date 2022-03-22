@@ -20,7 +20,8 @@
   font-weight: bold;
 }
 
-.postPhoto{ 
+.likeCount{
+  margin: 10px 0px;
 }
 
 .postPhoto > img{
@@ -41,4 +42,10 @@
   list-style: none;
   padding: 0px;
   margin: 0px;
+}
+
+.timeStamp{
+  color: gray;
+  margin: 10px 0px;
+  font-size: 5px;
 }
