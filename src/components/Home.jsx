@@ -32,7 +32,6 @@ function Home() {
   
   return (
     <div>
-      Home
       <Post user={post.user} 
             likes = {post.likes} 
             post = {post.post} 

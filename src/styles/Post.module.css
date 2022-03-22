@@ -15,3 +15,20 @@
 .userBar > div{
   font-weight: bold;
 }
+
+.postPhoto > img{
+  object-fit: cover;
+}
+
+.likeAndComment > img{
+  padding-right: 5px;
+}
+
+.reactionBox{
+  padding-left: 10px;
+}
+
+.commentlist ul{
+  list-style: none;
+  
+}
