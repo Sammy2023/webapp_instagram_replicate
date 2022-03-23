@@ -1,5 +1,6 @@
 import React from 'react';
 import Post from './Post.jsx'
+import css from "../styles/Home.module.css";
 
 function Home() {
   const post ={
@@ -31,7 +32,7 @@ function Home() {
   };
   
   return (
-    <div>
+    <div className={css.homeContainer}>
       <Post user={post.user} 
             likes = {post.likes} 
             post = {post.post} 
