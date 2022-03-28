@@ -30,14 +30,23 @@ function Home(props) {
   //     }
   //   ]
   // };
-  const {posts, users, likes, comments} = props;
+  const {posts, users, likes, comments, currentUserId} = props;
   
   function findUser(post, users){
     return users.find((user) => user.id === post.userId);
   }
   
-  function findUser(post, users){
-    return users.find((user) => user.id === post.userId);
+  function findComments(post, comments){
+    return comments.find((comment) => comment.postId === post.id);
+  }
+  
+  function findLikes(post, likes){
+    let postLikes = likes.filter((like) => like.postId === post.id); 
+    
+    return {
+      self: postLikes.some((like) => like.userId === currentUserId),
+      count: postLikes.length,
+    }
   }
   
   
