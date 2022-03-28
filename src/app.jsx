@@ -45,7 +45,13 @@ export default class App extends React.Component {
   
   renderMain(page){
     switch(page){
-      case "home": return <Home/>;
+      case "home": return 
+        <Home
+        currentUserId = {this.state.currentUserId}
+        posts = {this.state.posts} 
+        users = {this.state.users}
+        comments = {this.state.comments}
+        likes = {this.state.likes}/>;
       case "explore": return <Explore/>;
       case "newpost": return <NewPost/>;
       case "like": return <Activity/>;
