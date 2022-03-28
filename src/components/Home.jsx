@@ -49,7 +49,6 @@ function Home(props) {
     }
   }
   
-  
   return (
     <div className={css.homeContainer}>
       {posts.sort((a,b)=>new Date(b.datetime) - new Date(a.datetime))
@@ -59,9 +58,8 @@ function Home(props) {
              user={findUser(post, users)} 
              likes = {findLikes(post, likes)} 
              post = {post} 
-             comments={findComments(post, comments)}
+             comments = {findComments(post, comments)}
       />)}
-     
     </div>
   );
 }

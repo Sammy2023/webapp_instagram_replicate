@@ -6,7 +6,7 @@ import Activity from "./components/Activity.jsx";
 import Explore from "./components/Explore.jsx";
 import Post from "./components/Post.jsx";
 import Profile from "./components/Profile.jsx";
-import initialStore from 'utils/initialStore.js';
+import initialStore from './util/initialStore.js';
 import { useState } from 'react';
 
 
@@ -45,8 +45,8 @@ export default class App extends React.Component {
   
   renderMain(page){
     switch(page){
-      case "home": return 
-        <Home
+      case "home": 
+        return <Home
         currentUserId = {this.state.currentUserId}
         posts = {this.state.posts} 
         users = {this.state.users}
