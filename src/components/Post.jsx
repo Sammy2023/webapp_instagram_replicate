@@ -26,7 +26,12 @@ function Post(props){
       </div>
       <div className={css.reactionBox}>
         <div className={css.likeAndComment}>
-          <img src={likeIcon} />
+          <button>
+            { likes.self ? 
+              <img onClick={handleUnlike} src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/unlike.svg?v=1647287055039" />: 
+              <img onClick={handleLike} src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/like.svg?v=1647287055039" /> 
+            } 
+          </button>
           <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/comment.svg?v=1647286950412"/> 
         </div>
         <div className={css.likeCount}>
