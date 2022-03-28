@@ -19,21 +19,21 @@ import css from "./styles/App.module.css"
 import Seo from './components/seo.jsx';
 
 // App function that is reflected across the site
-export default function App() {
+export default class App extends React.component {
   
-  const [page, setPage] = useState('home');
-  const [currentUserId, setCurrentUserId] = useState(initialStore.currentUserId);
-  const [users, setUsers] = useState(initialStore.users);
-  const [posts, setPosts] = useState(initialStore.posts);
+  // const [page, setPage] = useState('home');
+  // const [currentUserId, setCurrentUserId] = useState(initialStore.currentUserId);
+  // const [users, setUsers] = useState(initialStore.users);
+  // const [posts, setPosts] = useState(initialStore.posts);
   
-//   constructor(props){
-//     super(props);
-//     //bind setPage 
-//     // this.setPage = this.setPage.bind(this);
-//     this.state = {
-//       page: "home"
-//     }
-//   }
+  constructor(props){
+    super(props);
+    //bind setPage 
+    // this.setPage = this.setPage.bind(this);
+    this.state = {
+      page: "home"
+    }
+  }
   
   setPage(page){
     console.log("child called me with", page);
