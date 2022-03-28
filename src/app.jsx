@@ -6,6 +6,7 @@ import Activity from "./components/Activity.jsx";
 import Explore from "./components/Explore.jsx";
 import Post from "./components/Post.jsx";
 import Profile from "./components/Profile.jsx";
+import initialStore from 'utils/initialStore.js';
 import { useState } from 'react';
 
 
@@ -19,7 +20,7 @@ import css from "./styles/App.module.css"
 import Seo from './components/seo.jsx';
 
 // App function that is reflected across the site
-export default class App extends React.component {
+export default class App extends React.Component {
   
   // const [page, setPage] = useState('home');
   // const [currentUserId, setCurrentUserId] = useState(initialStore.currentUserId);
@@ -31,7 +32,8 @@ export default class App extends React.component {
     //bind setPage 
     // this.setPage = this.setPage.bind(this);
     this.state = {
-      page: "home"
+      page: "home",
+      ...initialStore,
     }
   }
   
