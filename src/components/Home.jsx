@@ -30,7 +30,7 @@ function Home(props) {
              key= {post.id}
              user={findUser(post, users)} 
              likes = {findLikes(post, likes)} 
-             post = {post} 
+             post = {post}
              comments = {findComments(post, comments)}
       />)}
     </div>
