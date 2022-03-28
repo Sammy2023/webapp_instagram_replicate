@@ -32,17 +32,26 @@ function Home(props) {
   // };
   const {posts, users, likes, comments} = props;
   
+  function findUser(post, users){
+    return users.find((user) => user.id === post.userId);
+  }
+  
+  function findUser(post, users){
+    return users.find((user) => user.id === post.userId);
+  }
+  
+  
   return (
     <div className={css.homeContainer}>
       {posts.sort((a,b)=>new Date(b.datetime) - new Date(a.datetime))
        .map(post =>
            <Post 
              key= {post.id}
-             user={post.user} 
-             likes = {post.likes} 
-             post = {post.post} 
-             comments={post.comments}  />
-      )}
+             user={findUser(post, users)} 
+             likes = {findLikes(post, likes)} 
+             post = {post} 
+             comments={findComments(post, comments)}
+      />)}
      
     </div>
   );
