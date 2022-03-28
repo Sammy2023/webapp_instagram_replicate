@@ -36,9 +36,9 @@ function Home(props) {
     return users.find((user) => user.id === post.userId);
   }
   
-  function findComments(post, comments){
-    return comments.find((comment) => comment.postId === post.id);
-  }
+  function findComments(post, comments) {
+    return comments.filter((comment) => comment.postId === post.id);
+  }  
   
   function findLikes(post, likes){
     let postLikes = likes.filter((like) => like.postId === post.id); 

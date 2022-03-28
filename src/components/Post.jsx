@@ -7,7 +7,7 @@ function Post(props){
   const {user, post, likes, comments} = props;
   
   const likeIcon = likes.self ? "https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/unlike.svg?v=1647287055039" : "https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/like.svg?v=1647286978336";
-  console.log(comments);
+  console.log("comments : " + comments);
   const commentList = comments.map((comment) => 
      <li key={comment.userId}>
       <b>{comment.userId}</b> {comment.text}
