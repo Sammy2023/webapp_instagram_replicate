@@ -6,6 +6,7 @@ import Activity from "./components/Activity.jsx";
 import Explore from "./components/Explore.jsx";
 import Post from "./components/Post.jsx";
 import Profile from "./components/Profile.jsx";
+import { useState } from 'react';
 
 
 // Import and apply global CSS stylesheet
@@ -19,6 +20,12 @@ import Seo from './components/seo.jsx';
 
 // App function that is reflected across the site
 export default class App extends React.Component{
+  
+  const [page, setPage] = useState('home');
+  const [currentUserId, setCurrentUserId] = useState(initialStore);
+  const [page, setPage] = useState('home');
+  const [page, setPage] = useState('home');
+  
   constructor(props){
     super(props);
     //bind setPage 
