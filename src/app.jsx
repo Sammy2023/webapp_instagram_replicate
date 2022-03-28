@@ -45,7 +45,9 @@ export default class App extends React.Component {
   
   addLike(postId){
     const like ={
-      
+      userId: this.state.currentUserId,
+      postId,
+      datetime: new Date().toISOString(),
     }
   }
   

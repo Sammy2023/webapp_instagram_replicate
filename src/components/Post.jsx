@@ -15,11 +15,11 @@ function Post(props){
   );
   
   function handleUnlike(){
-    
+    console.log("Unlike");
   }
   
   function handleLike(){
-    
+    console.log("Like");
   }
   
   return (
