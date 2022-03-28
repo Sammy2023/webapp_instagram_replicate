@@ -43,6 +43,12 @@ export default class App extends React.Component {
     this.setState({page: page});
   }
   
+  addLike(postId){
+    const like ={
+      
+    }
+  }
+  
   renderMain(page){
     switch(page){
       case "home": 

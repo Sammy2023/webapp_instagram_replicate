@@ -13,6 +13,15 @@ function Post(props){
       <b>{comment.userId}</b> {comment.text}
      </li>
   );
+  
+  function handleUnlike(){
+    
+  }
+  
+  function handleLike(){
+    
+  }
+  
   return (
     <div clasName={css.postContainer}>
       <div  className={css.userBar}>

@@ -26,8 +26,8 @@
 
 .postPhoto > img{
   object-fit: cover;
-  width: 300px;
-  height: 350px;
+  width: 350px;
+  height: 400px;
 }
 
 .likeAndComment > img{
