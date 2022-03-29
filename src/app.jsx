@@ -59,8 +59,8 @@ export default class App extends React.Component {
   
   removeLike(postId){
     this.setState({
-      likes: this.state.likes.filter((like) => (like.userId === this.state.currentUserId && like.postId === postId))
-    })
+      likes: this.state.likes.filter((like) => !(like.userId === this.state.currentUserId && like.postId === postId))
+    });
   }
   
   renderMain(page){
