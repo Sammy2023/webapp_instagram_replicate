@@ -13,11 +13,11 @@ function Post(props){
   );
   
   function handleUnlike(){
-      onLike
+      onLike(props.post.id)
   }
   
   function handleLike(){
-    console.log("Like");
+      onUnlike(props.post.id)
   }
   
   return (
