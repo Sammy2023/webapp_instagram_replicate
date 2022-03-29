@@ -1,0 +1,10 @@
+.profileBar{
+  display: flex;
+  justify-content: left; 
+}
+
+.profileBar > img{
+  width: 100px;
+  border-radius: 50%;
+  padding: 10px;
+}

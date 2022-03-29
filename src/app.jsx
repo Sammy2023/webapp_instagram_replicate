@@ -81,7 +81,15 @@ export default class App extends React.Component {
       case "explore": return <Explore/>;
       case "newpost": return <NewPost/>;
       case "like": return <Activity/>;
-      case "profile": return <Profile/>;
+      case "profile": return <Profile
+        currentUserId = {this.state.currentUserId}
+        posts = {this.state.posts} 
+        users = {this.state.users}
+        comments = {this.state.comments}
+        likes = {this.state.likes}
+        onLike = {this.addLike}
+        onUnlike = {this.removeLike}
+        />;
     }
   }
   render(){

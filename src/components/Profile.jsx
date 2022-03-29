@@ -1,13 +1,18 @@
 import React from 'react';
+import css from "../styles/Profile.module.css";
 
-function Profile(){
+function Profile(props){
+  const {currentUserId, users, post} = props;
+  const currentUser = users.filter((user) => user.id === currentUserId);
   return (
     <div>
       <div  className={css.profileBar}>
-        <img src={user.photo}/>
+        <img src={currentUser[0].photo}/>
         <div>
-          {user.id}
+          {currentUser[0].id}
         </div>
+      </div>
+      <div>
       </div>
     </div>
   )  
