@@ -71,7 +71,10 @@ export default class App extends React.Component {
         posts = {this.state.posts} 
         users = {this.state.users}
         comments = {this.state.comments}
-        likes = {this.state.likes}/>;
+        likes = {this.state.likes}
+        onLike = {this.addLike}
+        onUnlike = {this.removeLike}
+        />;
       case "explore": return <Explore/>;
       case "newpost": return <NewPost/>;
       case "like": return <Activity/>;

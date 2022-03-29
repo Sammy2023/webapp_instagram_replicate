@@ -4,7 +4,7 @@ import timestamp from "../util/timespan.js"
 
 function Post(props){
   
-  const {user, post, likes, comments} = props;
+  const {user, post, likes, comments, onLike, onUnlike} = props;
   console.log("likes : " + likes);
   const commentList = comments.map((comment) => 
      <li key={comment.userId}>
@@ -13,7 +13,7 @@ function Post(props){
   );
   
   function handleUnlike(){
-    console.log("Unlike");
+      onLike
   }
   
   function handleLike(){
