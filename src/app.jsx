@@ -34,6 +34,8 @@ export default class App extends React.Component {
     this.state = {
       page: "home",
       ...initialStore,
+      this.addLike = this.addLike.bind(this),
+      this.removeLike = 
     }
   }
   
