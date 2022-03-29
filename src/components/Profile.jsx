@@ -6,13 +6,15 @@ function Profile(props){
   const currentUser = users.filter((user) => user.id === currentUserId);
   return (
     <div>
-      <div  className={css.profileBar}>
+      <div className={css.profileBar}>
         <img src={currentUser[0].photo}/>
         <div>
           {currentUser[0].id}
         </div>
       </div>
-      <div>
+        <div>{currentUser[0].name}</div>
+        <div>{currentUser[0].bio}</div>
+      <div >
       </div>
     </div>
   )  
