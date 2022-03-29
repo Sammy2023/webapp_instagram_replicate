@@ -38,12 +38,15 @@ export default class App extends React.Component {
     
     this.addLike = this.addLike.bind(this),
     this.removeLike = this.removeLike.bind(this)
+    this.setPage = this.setPage.bind(this)
   }
   
   setPage(page){
     console.log("child called me with", page);
     console.log(this);
-    this.setState({page: page});
+    this.setState({
+      page: page
+    });
   }
   
   addLike(postId){

@@ -3,7 +3,12 @@ import React from 'react';
 function Profile(){
   return (
     <div>
-      Profile
+      <div  className={css.profileBar}>
+        <img src={user.photo}/>
+        <div>
+          {user.id}
+        </div>
+      </div>
     </div>
   )  
 }
