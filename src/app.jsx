@@ -49,6 +49,9 @@ export default class App extends React.Component {
       postId,
       datetime: new Date().toISOString(),
     }
+    this.setState({
+      likes: this.state.likes.concat(like)
+    });
   }
   
   renderMain(page){
