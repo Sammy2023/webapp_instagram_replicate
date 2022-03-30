@@ -1,5 +1,5 @@
 .profileContainer{
-  margin
+  margin-bottom: 20px;
 }
 .profileBar{
   display: flex;
@@ -10,6 +10,13 @@
   width: 100px;
   border-radius: 50%;
   padding: 10px;
+}
+
+.profileBar > p{
+  margin: 0px; 
+  padding: 20px 10px;
+  font-size: 30px;
+  font-weight: 200;
 }
 
 .posts{

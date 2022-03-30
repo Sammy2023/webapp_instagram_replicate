@@ -12,9 +12,9 @@ function Profile(props){
     <div className={css.profileContainer}>
       <div className={css.profileBar}>
         <img src={currentUser[0].photo}/>
-        <div>
+        <p>
           {currentUser[0].id}
-        </div>
+        </p>
       </div>
       <div className={css.profileDetail}>        
         <div>{currentUser[0].name}</div>
