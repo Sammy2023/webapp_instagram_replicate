@@ -1,6 +1,6 @@
 import React from 'react';
 import css from "../styles/Profile.module.css";
-import PostThumbnail from "../util/PostThumbnail.js"
+import PostThumbnail from "./PostThumbnail.jsx"
 
 function Profile(props){
   const {currentUserId, users, posts, followers} = props;
