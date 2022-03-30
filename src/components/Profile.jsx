@@ -9,27 +9,29 @@ function Profile(props){
   const followYou = followers.filter((follower) => follower.userId === currentUserId);
   const following = followers.filter((follower) => follower.followerId === currentUserId);
   return (
-    <div>
+    <div className={css.profileContainer}>
       <div className={css.profileBar}>
         <img src={currentUser[0].photo}/>
         <div>
           {currentUser[0].id}
         </div>
-      </div className={css.profileDetail}>
+      </div>
+      <div className={css.profileDetail}>        
         <div>{currentUser[0].name}</div>
         <div>{currentUser[0].bio}</div>
+      </div>
       <div className={css.profileStatus}>
           <div className={css.statusItem}>
               <div>{currentPost.length}</div>
-              <div>post</div>
+              <p>post</p>
           </div>
           <div className={css.statusItem}>
             <div>{followYou.length}</div>
-             <div>followers</div>
+             <p>followers</p>
           </div>
           <div className={css.statusItem}>
               <div>{following.length}</div>
-              <div>following</div>
+              <p>following</p>
           </div>
       </div>
       <div className={css.posts}>
