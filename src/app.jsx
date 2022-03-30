@@ -86,6 +86,7 @@ export default class App extends React.Component {
         posts = {this.state.posts} 
         users = {this.state.users}
         comments = {this.state.comments}
+        followers = {this.state.followers}
         likes = {this.state.likes}
         onLike = {this.addLike}
         onUnlike = {this.removeLike}
