@@ -15,22 +15,26 @@ function Profile(props){
         <div>
           {currentUser[0].id}
         </div>
-      </div>
+      </div className={css.profileDetail}>
         <div>{currentUser[0].name}</div>
         <div>{currentUser[0].bio}</div>
-      <div >
-          <div>
+      <div className={css.profileStatus}>
+          <div className={css.statusItem}>
               <div>{currentPost.length}</div>
               <div>post</div>
           </div>
-          <div>
+          <div className={css.statusItem}>
             <div>{followYou.length}</div>
              <div>followers</div>
           </div>
-          <div>
+          <div className={css.statusItem}>
               <div>{following.length}</div>
               <div>following</div>
           </div>
+      </div>
+      <div className={css.posts}>
+        {posts.filter((post) => post.userId === currentUserId)
+          .map(post => <PostThumbnail post={post}/>)}
       </div>
     </div>
   )  

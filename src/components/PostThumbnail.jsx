@@ -5,7 +5,7 @@ function PostThumbnail(props) {
   return (
     <div className={css.square}>
       <div className={css.content}>
-        // <img className={css.image} src={props.post.photo} alt="Post Thumbnail"/>
+         <img className={css.image} src={props.post.photo} alt="Post Thumbnail"/>
       </div>
         
     </div>
