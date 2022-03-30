@@ -1,10 +1,11 @@
 import React from 'react';
 import css from "../styles/Profile.module.css";
+import PostThumbnail from "../util/PostThumbnail.js"
 
 function Profile(props){
   const {currentUserId, users, posts, followers} = props;
   const currentUser = users.filter((user) => user.id === currentUserId);
-  const currentPost = followers.filter((follower) => follower.userId === currentUserId);
+  const currentPost = posts.filter((post) => post.userId === currentUserId);
   const followYou = followers.filter((follower) => follower.userId === currentUserId);
   const following = followers.filter((follower) => follower.followerId === currentUserId);
   return (
@@ -19,6 +20,7 @@ function Profile(props){
         <div>{currentUser[0].bio}</div>
       <div >
           <div>
+              <div>{currentPost.length}</div>
               <div>post</div>
           </div>
           <div>

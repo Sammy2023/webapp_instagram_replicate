@@ -1,15 +1,15 @@
 import React from 'react';
-import css from './PostThumbnail.module.css';
-import publicUrl from 'utils/publicUrl';
+import css from '../styles/PostThumbnail.module.css';
 
 function PostThumbnail(props) {
   return (
     <div className={css.square}>
       <div className={css.content}>
-        <img className={css.image} src={props.post.photo} alt="Post Thumbnail"/>
+        // <img className={css.image} src={props.post.photo} alt="Post Thumbnail"/>
       </div>
         
     </div>
+    
   );
 }
 
