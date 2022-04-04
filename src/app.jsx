@@ -27,6 +27,8 @@ export default function App (){
   const [users, setUsers] = useState(initialStore.users);
   const [posts, setPosts] = useState(initialStore.posts);
   const [likes, setLikes] = useState(initialStore.likes);
+  const [comments, setComments] = useState(initialStore.comments);
+  const [followers, setFollowers] = useState(initialStore.followers);
   
 //   constructor(props){
 //     super(props);
@@ -42,8 +44,6 @@ export default function App (){
 //     this.setPage = this.setPage.bind(this)
 //   }
   
-  setPage(page);
-  
   function addLike(postId){
     const like ={
       userId: currentUserId,
@@ -55,35 +55,36 @@ export default function App (){
   }
   
   function removeLike(postId){
-    setLikes(likes.filter((like) => !(like.userId === this.state.currentUserId && like.postId === postId)));
+    setLikes(likes.filter((like) => !(like.userId === currentUserId && like.postId === postId)));
   }
   
   function renderMain(page){
     switch(page){
       case "home": 
         return <Home
-        currentUserId = {this.state.currentUserId}
-        posts = {this.state.posts} 
-        users = {this.state.users}
-        comments = {this.state.comments}
-        likes = {this.state.likes}
-        onLike = {this.addLike}
-        onUnlike = {this.removeLike}
+        currentUserId = {currentUserId}
+        posts = {posts} 
+        users = {users}
+        comments = {comments}
+        likes = {likes}
+        onLike = {addLike}
+        onUnlike = {removeLike}
         />;
       case "explore": return <Explore/>;
       case "newpost": return <NewPost/>;
       case "like": return <Activity/>;
       case "profile": return <Profile
-        currentUserId = {this.state.currentUserId}
-        posts = {this.state.posts} 
-        users = {this.state.users}
-        comments = {this.state.comments}
-        followers = {this.state.followers}
-        likes = {this.state.likes}
-        onLike = {this.addLike}
-        onUnlike = {this.removeLike}
+        currentUserId = {currentUserId}
+        posts = {posts} 
+        users = {users}
+        comments = {comments}
+        followers = {followers}
+        likes = {likes}
+        onLike = {addLike}
+        onUnlike = {removeLike}
         />;
     }
+    setPage(page);
   }
   function render(){
     return (
@@ -93,11 +94,13 @@ export default function App (){
         <div className={css.container}>
           <Header/>
           <main role="main" className="wrapper">
-            {this.renderMain(this.state.page)}
+            {renderMain(page)}
           </main>
-          <Navbar handleNavChange={this.setPage}/>
+          <Navbar handleNavChange={setPage}/>
         </div>
       </>
   );
   }
+  
+  render();
 }
