@@ -1,11 +1,15 @@
 import React from 'react';
 import css from "../styles/Post.module.css";
-import timestamp from "../util/timespan.js"
+import timestamp from "../util/timespan.js";
+import { useState } from 'react';
 
 function Post(props){
   
   const {user, post, likes, comments, onLike, onUnlike} = props;
-  console.log("likes : " + likes);
+  const [comment, setComment] = useState('');
+  const [toggleComment, setToggleComment] = useState(false); // comment is hidden
+  
+  
   const commentList = comments.map((comment) => 
      <li key={comment.userId}>
       <b>{comment.userId}</b> {comment.text}
@@ -58,6 +62,13 @@ function Post(props){
           {timestamp(post.datetime)}
         </div>
       </div>
+      <form action="">
+          <input type="text" placeholder="Add a comment..."
+            value={comment}
+            onChange={e=>setComment(e.target.value)}
+           />
+          <button type="submit">Post</button>
+      </form>
     </div>
   );
 }
