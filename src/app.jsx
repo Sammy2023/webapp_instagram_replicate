@@ -86,8 +86,8 @@ export default function App (){
     }
     setPage(page);
   }
-  function render(){
-    return (
+  
+  return (
       <>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <Seo />
@@ -100,7 +100,5 @@ export default function App (){
         </div>
       </>
   );
-  }
   
-  render();
 }
