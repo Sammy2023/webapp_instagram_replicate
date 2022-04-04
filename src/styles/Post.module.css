@@ -1,5 +1,20 @@
 .addComment {
   margin: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 350px;
+  border: none;
+}
+
+.addComment > button {
+  color: #0095f6;
+  padding: 10px;
+}
+
+.addComment > input {
+  border: none;
+  padding: 10px;
 }
 
 .postContainer{
