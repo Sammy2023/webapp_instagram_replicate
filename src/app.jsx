@@ -20,26 +20,26 @@ import css from "./styles/App.module.css"
 import Seo from './components/seo.jsx';
 
 // App function that is reflected across the site
-export default class App extends React.Component {
+export default function App (){
   
-  // const [page, setPage] = useState('home');
-  // const [currentUserId, setCurrentUserId] = useState(initialStore.currentUserId);
-  // const [users, setUsers] = useState(initialStore.users);
-  // const [posts, setPosts] = useState(initialStore.posts);
+  const [page, setPage] = useState('home');
+  const [currentUserId, setCurrentUserId] = useState(initialStore.currentUserId);
+  const [users, setUsers] = useState(initialStore.users);
+  const [posts, setPosts] = useState(initialStore.posts);
   
-  constructor(props){
-    super(props);
-    //bind setPage 
-    // this.setPage = this.setPage.bind(this);
-    this.state = {
-      page: "home",
-      ...initialStore,
-    }
+//   constructor(props){
+//     super(props);
+//     //bind setPage 
+//     // this.setPage = this.setPage.bind(this);
+//     this.state = {
+//       page: "home",
+//       ...initialStore,
+//     }
     
-    this.addLike = this.addLike.bind(this),
-    this.removeLike = this.removeLike.bind(this)
-    this.setPage = this.setPage.bind(this)
-  }
+//     this.addLike = this.addLike.bind(this),
+//     this.removeLike = this.removeLike.bind(this)
+//     this.setPage = this.setPage.bind(this)
+//   }
   
   setPage(page){
     console.log("child called me with", page);
@@ -51,12 +51,12 @@ export default class App extends React.Component {
   
   addLike(postId){
     const like ={
-      userId: this.state.currentUserId,
+      userId: currentUserId,
       postId,
       datetime: new Date().toISOString(),
     }
     this.setState({
-      likes: this.state.likes.concat(like)
+      likes: like)
     });
   }
   
