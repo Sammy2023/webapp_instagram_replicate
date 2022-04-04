@@ -8,6 +8,7 @@ import Post from "./components/Post.jsx";
 import Profile from "./components/Profile.jsx";
 import initialStore from './util/initialStore.js';
 import { useState } from 'react';
+import uniqueId from './util/uniqueId.js'
 
 
 // Import and apply global CSS stylesheet
@@ -67,6 +68,19 @@ export default function App (){
     }
     
     setComments(comments.concat(comment));
+  }
+  
+  function addPost(photo, desc){
+    const post = {
+      userId: currentUserId,
+      id: uniqueId('post'),
+      datetime: new Date().toISOString(),
+      photo: photo,
+      desc: desc
+    }
+    
+    setPosts(posts.concat(post))
+    setPage('home');
   }
   
   function renderMain(page){
