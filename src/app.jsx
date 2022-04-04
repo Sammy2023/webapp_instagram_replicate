@@ -26,6 +26,7 @@ export default function App (){
   const [currentUserId, setCurrentUserId] = useState(initialStore.currentUserId);
   const [users, setUsers] = useState(initialStore.users);
   const [posts, setPosts] = useState(initialStore.posts);
+  const [likes, setLikes] = useState(initialStore.likes);
   
 //   constructor(props){
 //     super(props);
@@ -41,32 +42,23 @@ export default function App (){
 //     this.setPage = this.setPage.bind(this)
 //   }
   
-  setPage(page){
-    console.log("child called me with", page);
-    console.log(this);
-    this.setState({
-      page: page
-    });
-  }
+  setPage(page);
   
-  addLike(postId){
+  function addLike(postId){
     const like ={
       userId: currentUserId,
       postId,
       datetime: new Date().toISOString(),
-    }
-    this.setState({
-      likes: like)
-    });
+    };
+    
+    setLikes(likes.concat(like));
   }
   
-  removeLike(postId){
-    this.setState({
-      likes: this.state.likes.filter((like) => !(like.userId === this.state.currentUserId && like.postId === postId))
-    });
+  function removeLike(postId){
+    setLikes(likes.filter((like) => !(like.userId === this.state.currentUserId && like.postId === postId)));
   }
   
-  renderMain(page){
+  function renderMain(page){
     switch(page){
       case "home": 
         return <Home
@@ -93,7 +85,7 @@ export default function App (){
         />;
     }
   }
-  render(){
+  function render(){
     return (
       <>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
