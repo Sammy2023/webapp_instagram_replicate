@@ -58,6 +58,17 @@ export default function App (){
     setLikes(likes.filter((like) => !(like.userId === currentUserId && like.postId === postId)));
   }
   
+  function addComment(postId, text){
+    const comment = {
+      userId: currentUserId,
+      postId,
+      text,
+      datetime: new Date().toISOString(),
+    }
+    
+    setComments(comments.concat(comment));
+  }
+  
   function renderMain(page){
     switch(page){
       case "home": 
@@ -69,6 +80,7 @@ export default function App (){
         likes = {likes}
         onLike = {addLike}
         onUnlike = {removeLike}
+        onComment = {addComment}
         />;
       case "explore": return <Explore/>;
       case "newpost": return <NewPost/>;

@@ -26,6 +26,10 @@ function Post(props){
       onLike(props.post.id)
   }
   
+  function handleSubmitComment(event){
+      console.log("add comment
+  }
+  
   return (
     <div clasName={css.postContainer}>
       <div  className={css.userBar}>
@@ -45,7 +49,9 @@ function Post(props){
                 <img onClick={handleLike} src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/like.svg?v=1647287055039" /> 
             } 
           </button>
-          <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/comment.svg?v=1647286950412"/> 
+          <button onClick={e=>setToggleComment(!toggleComment)}>
+            <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/comment.svg?v=1647286950412"/>
+          </button>  
         </div>
         <div className={css.likeCount}>
           <b> {likes.count} likes</b>
@@ -62,13 +68,15 @@ function Post(props){
           {timestamp(post.datetime)}
         </div>
       </div>
-      <form action="">
-          <input type="text" placeholder="Add a comment..."
-            value={comment}
-            onChange={e=>setComment(e.target.value)}
-           />
-          <button type="submit">Post</button>
-      </form>
+      {toggleComment &&
+        <form className={css.addComment} onSubmit={handleSubmitComment}>
+            <input type="text" placeholder="Add a comment..."
+              value={comment}
+              onChange={e=>setComment(e.target.value)}
+             />
+            <button type="submit">Post</button>
+        </form>
+      }
     </div>
   );
 }

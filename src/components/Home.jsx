@@ -3,7 +3,7 @@ import Post from './Post.jsx'
 import css from "../styles/Home.module.css";
 
 function Home(props) {
-  const {posts, users, likes, comments, currentUserId, onLike, onUnlike} = props;
+  const {posts, users, likes, comments, currentUserId, onLike, onUnlike, onComment} = props;
   
   function findUser(post, users){
     return users.find((user) => user.id === post.userId);
@@ -34,6 +34,7 @@ function Home(props) {
              comments = {findComments(post, comments)}
              onLike = {onLike}
              onUnlike = {onUnlike}
+             onComment = {onComment}
       />)}
     </div>
   );

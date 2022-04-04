@@ -1,3 +1,7 @@
+.addComment {
+  margin: 0px;
+}
+
 .postContainer{
   display: flex;
   justify-content: center;
