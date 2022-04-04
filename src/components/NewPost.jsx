@@ -36,7 +36,7 @@ function NewPost(props) {
   }
   function handleDescChange(e){
 		// TODO: call setDesc
-    set
+    setDesc(e.target.value)
   }
   function handleSubmit(e){
 		// TODO:
@@ -44,6 +44,8 @@ function NewPost(props) {
 		// 2. Show error msg if failed and exit
 		// 3. Call the storage update function passed from the parent
 		// 3. Clear error msg
+    
+    e.preventDefault(); 
   }
   function handleCancel(){
     // TODO: Notify the parent about the cancellation

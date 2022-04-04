@@ -31,20 +31,6 @@ export default function App (){
   const [comments, setComments] = useState(initialStore.comments);
   const [followers, setFollowers] = useState(initialStore.followers);
   
-//   constructor(props){
-//     super(props);
-//     //bind setPage 
-//     // this.setPage = this.setPage.bind(this);
-//     this.state = {
-//       page: "home",
-//       ...initialStore,
-//     }
-    
-//     this.addLike = this.addLike.bind(this),
-//     this.removeLike = this.removeLike.bind(this)
-//     this.setPage = this.setPage.bind(this)
-//   }
-  
   function addLike(postId){
     const like ={
       userId: currentUserId,
