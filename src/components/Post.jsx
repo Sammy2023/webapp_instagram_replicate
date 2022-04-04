@@ -5,14 +5,14 @@ import { useState } from 'react';
 
 function Post(props){
   
-  const {user, post, likes, comments, onLike, onUnlike} = props;
+  const {user, post, likes, comments, onLike, onUnlike, onComment} = props;
   const [comment, setComment] = useState('');
   const [toggleComment, setToggleComment] = useState(false); // comment is hidden
   
   
   const commentList = comments.map((comment) => 
      <li key={comment.userId}>
-      <b>{comment.userId}</b> {comment.text}
+      <b>{comment.userId} </b> {comment.text}
      </li>
   );
   
@@ -27,7 +27,10 @@ function Post(props){
   }
   
   function handleSubmitComment(event){
-      console.log("add comment
+      onComment(post.id, comment);
+      setComment('');
+      setToggleComment(false); // close comment box
+      event.preventDefault(); // prevents page default refresh
   }
   
   return (
