@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import css from './NewPost.module.css';
-import FileLoader from './FileLoader.js';
+import css from '../styles/NewPost.module.css';
+import FileLoader from '../util/FileLoader.js';
 
 function NewPost(props) {
   const [dragging, setDragging] = useState(false); // to show a dragging effect
   const [desc, setDesc] = useState('');
   const [photo, setPhoto] = useState(null);
   const [error, setError] = useState(''); // to show an error message
+  const {onAddPost} = props;
 
   function handleFileDragEnter(e){
     setDragging(true);
@@ -34,6 +35,7 @@ function NewPost(props) {
     }
     setDragging(false);    
   }
+  
   function handleDescChange(e){
 		// TODO: call setDesc
     setDesc(e.target.value)
@@ -44,11 +46,13 @@ function NewPost(props) {
 		// 2. Show error msg if failed and exit
 		// 3. Call the storage update function passed from the parent
 		// 3. Clear error msg
-    
-    e.preventDefault(); 
+    alert(error);
+    onAddPost(photo,desc);
+    e.preventDefault();
   }
   function handleCancel(){
     // TODO: Notify the parent about the cancellation
+    
   }
   return (
     <div>

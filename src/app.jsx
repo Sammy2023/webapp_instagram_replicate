@@ -5,6 +5,7 @@ import Header from "./components/Header.jsx";
 import Activity from "./components/Activity.jsx";
 import Explore from "./components/Explore.jsx";
 import Post from "./components/Post.jsx";
+import NewPost from "./components/NewPost.jsx";
 import Profile from "./components/Profile.jsx";
 import initialStore from './util/initialStore.js';
 import { useState } from 'react';
@@ -83,7 +84,9 @@ export default function App (){
         onComment = {addComment}
         />;
       case "explore": return <Explore/>;
-      case "newpost": return <NewPost/>;
+      case "newpost": return <NewPost
+        onAddPost = {addPost}
+      />;
       case "like": return <Activity/>;
       case "profile": return <Profile
         currentUserId = {currentUserId}
