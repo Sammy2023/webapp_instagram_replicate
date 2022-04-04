@@ -15,7 +15,13 @@
 .addComment > input {
   border: none;
   padding: 10px;
+  width: 100%;
 }
+
+.addComment > input:focus{
+    outline: none;
+}
+
 
 .postContainer{
   display: flex;

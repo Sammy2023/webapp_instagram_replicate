@@ -27,8 +27,10 @@ function Post(props){
   }
   
   function handleSubmitComment(event){
-      onComment(post.id, comment);
-      setComment('');
+      if (comment != "") {
+        onComment(post.id, comment);
+        setComment('');
+      }
       setToggleComment(false); // close comment box
       event.preventDefault(); // prevents page default refresh
   }
