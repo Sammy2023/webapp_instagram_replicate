@@ -46,7 +46,9 @@ function NewPost(props) {
 		// 2. Show error msg if failed and exit
 		// 3. Call the storage update function passed from the parent
 		// 3. Clear error msg
-    alert(error);
+    if (photo == null)
+    //null image
+    console.log(error);
     onAddPost(photo,desc);
     e.preventDefault();
   }
