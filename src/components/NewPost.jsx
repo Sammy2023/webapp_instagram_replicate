@@ -46,9 +46,10 @@ function NewPost(props) {
 		// 2. Show error msg if failed and exit
 		// 3. Call the storage update function passed from the parent
 		// 3. Clear error msg
-    if (photo == null)
+    if (photo == null) {
+      setError('You need to add a photo !')
+    }
     //null image
-    console.log(error);
     onAddPost(photo,desc);
     e.preventDefault();
   }
@@ -57,8 +58,7 @@ function NewPost(props) {
     
   }
   return (
-    <div>
-        
+    <div className={css.newPostContainer}>
         <div className={css.photo}>
           {!photo?  <div className={css.message}>Drop your image</div>:
                     <img src={photo} alt="New Post"/>}
@@ -74,10 +74,12 @@ function NewPost(props) {
         </div>
         
         <div className={css.desc} >
-					{/* TODO: add textarea */}
+					<textarea placeholder="Describe..."
+            onChange={handleDescChange}>
+          </textarea>
         </div>
         <div className={css.error}>
-					{/* TODO: show error message */}
+					{error}
         </div>
         <div className={css.actions}>
           <button onClick={handleCancel}>Cancel</button>
