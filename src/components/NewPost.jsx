@@ -6,7 +6,7 @@ function NewPost(props) {
   const [dragging, setDragging] = useState(false); // to show a dragging effect
   const [desc, setDesc] = useState('');
   const [photo, setPhoto] = useState(null);
-  const [error, setError] = useState(''); // to show an error message
+  const [error, setError] = useState('hello'); // to show an error message
   const {onAddPost} = props;
 
   function handleFileDragEnter(e){
@@ -46,11 +46,14 @@ function NewPost(props) {
 		// 2. Show error msg if failed and exit
 		// 3. Call the storage update function passed from the parent
 		// 3. Clear error msg
-    if (photo == null) {
-      setError('You need to add a photo !')
+    if(photo == null) {
+      setError('You need to add a photo !');
+      return;
     }
+    console.log(photo);
     //null image
     onAddPost(photo,desc);
+    setError('');
     e.preventDefault();
   }
   function handleCancel(){
@@ -72,7 +75,6 @@ function NewPost(props) {
 	          </FileLoader>
           
         </div>
-        
         <div className={css.desc} >
 					<textarea placeholder="Describe..."
             onChange={handleDescChange}>
