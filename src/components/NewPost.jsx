@@ -6,8 +6,8 @@ function NewPost(props) {
   const [dragging, setDragging] = useState(false); // to show a dragging effect
   const [desc, setDesc] = useState('');
   const [photo, setPhoto] = useState(null);
-  const [error, setError] = useState('hello'); // to show an error message
-  const {onAddPost} = props;
+  const [error, setError] = useState(''); // to show an error message
+  const {onAddPost, onCancelPost} = props;
 
   function handleFileDragEnter(e){
     setDragging(true);
@@ -58,7 +58,7 @@ function NewPost(props) {
   }
   function handleCancel(){
     // TODO: Notify the parent about the cancellation
-    
+    onCancelPost()
   }
   return (
     <div className={css.newPostContainer}>

@@ -70,6 +70,9 @@ export default function App (){
     setPage('home');
   }
   
+  function cancelPost() {
+    setPage("home");
+  }
   function renderMain(page){
     switch(page){
       case "home": 
@@ -86,6 +89,7 @@ export default function App (){
       case "explore": return <Explore/>;
       case "newpost": return <NewPost
         onAddPost = {addPost}
+        onCancelPost = {cancelPost}
       />;
       case "like": return <Activity/>;
       case "profile": return <Profile
