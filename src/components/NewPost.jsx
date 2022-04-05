@@ -28,7 +28,7 @@ function NewPost(props) {
 				let reader = new FileReader();			
 				reader.onloadend = (e) => {
 					// TODO: call setPhoto with e.target.result (this is a Base64 image string)
-		
+		      setPhoto(e.target.result);
 				};
 				reader.readAsDataURL(file);
 			}
@@ -38,23 +38,20 @@ function NewPost(props) {
   
   function handleDescChange(e){
 		// TODO: call setDesc
-    setDesc(e.target.value)
+    setDesc(e.target.desc);
   }
   function handleSubmit(e){
-		// TODO:
-		// 1. Prevent default behavior
-		// 2. Show error msg if failed and exit
-		// 3. Call the storage update function passed from the parent
-		// 3. Clear error msg
-    if(photo == null) {
+    
+    e.preventDefault();
+    
+    if(photo === null) {
       setError('You need to add a photo !');
       return;
     }
-    console.log(photo);
+    
     //null image
-    onAddPost(photo,desc);
+    onAddPost(photo, desc);
     setError('');
-    e.preventDefault();
   }
   function handleCancel(){
     // TODO: Notify the parent about the cancellation
