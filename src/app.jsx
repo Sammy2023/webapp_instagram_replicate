@@ -21,6 +21,13 @@ import css from "./styles/App.module.css"
 // The component that adds our Meta tags to the page
 import Seo from './components/seo.jsx';
 
+// To use router
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+
 // App function that is reflected across the site
 export default function App (){
   
@@ -110,13 +117,15 @@ export default function App (){
       <>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <Seo />
-        <div className={css.container}>
-          <Header/>
-          <main role="main" className="wrapper">
-            {renderMain(page)}
-          </main>
-          <Navbar handleNavChange={setPage}/>
-        </div>
+        <Router>
+         <div className={css.container}>
+            <Header/>
+            <main role="main" className="wrapper">
+              {renderMain(page)}
+            </main>
+            <Navbar handleNavChange={setPage}/>
+          </div>
+        </Router>
       </>
   );
   
