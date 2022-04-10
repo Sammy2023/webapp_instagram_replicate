@@ -132,12 +132,24 @@ export default function App (){
         posts = {posts} 
         users = {users}
         comments = {comments}
+        followers = {followers}
         likes = {likes}
         onLike = {addLike}
         onUnlike = {removeLike}
-        onComment = {addComment}
       />
-      }></Route>
+      }/>
+    <Route path="like" element={
+      <Activity/>
+    }/>
+    <Route path="explore" element={
+      <Explore/>
+    }/>
+    <Route path="newpost" element={
+      <NewPost
+        onAddPost = {addPost}
+        onCancelPost = {cancelPost}
+        />
+    }/>
   </Routes>
   
   return (
