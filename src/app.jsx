@@ -114,13 +114,11 @@ export default function App (){
   // }
   
   return (
-      <>
+      <Router>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <Seo />
          <div className={css.container}>
             <Header/>
             <main role="main" className="wrapper">
-              <Router>
               <Routes>
                   <Route path="/" element={
                       <Home
@@ -159,11 +157,10 @@ export default function App (){
                       />
                   }/>
                 </Routes>
-              </Router>
             </main>
             <Navbar/>
           </div>
-      </>
+      </Router>
   );
   
 }
