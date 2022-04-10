@@ -80,91 +80,89 @@ export default function App (){
   function cancelPost() {
     setPage("home");
   }
-  function renderMain(page){
-    switch(page){
-      case "home": 
-        return <Home
-        currentUserId = {currentUserId}
-        posts = {posts} 
-        users = {users}
-        comments = {comments}
-        likes = {likes}
-        onLike = {addLike}
-        onUnlike = {removeLike}
-        onComment = {addComment}
-        />;
-      case "explore": return <Explore/>;
-      case "newpost": return <NewPost
-        onAddPost = {addPost}
-        onCancelPost = {cancelPost}
-      />;
-      case "like": return <Activity/>;
-      case "profile": return <Profile
-        currentUserId = {currentUserId}
-        posts = {posts} 
-        users = {users}
-        comments = {comments}
-        followers = {followers}
-        likes = {likes}
-        onLike = {addLike}
-        onUnlike = {removeLike}
-        />;
-    }
-    setPage(page);
-  }
-  
-  <Routes>
-    <Route path="/" element={
-        <Home
-        currentUserId = {currentUserId}
-        posts = {posts} 
-        users = {users}
-        comments = {comments}
-        likes = {likes}
-        onLike = {addLike}
-        onUnlike = {removeLike}
-        onComment = {addComment}
-      />
-      }></Route>
-    <Route path="profile" element={
-        <Profile
-        currentUserId = {currentUserId}
-        posts = {posts} 
-        users = {users}
-        comments = {comments}
-        followers = {followers}
-        likes = {likes}
-        onLike = {addLike}
-        onUnlike = {removeLike}
-      />
-      }/>
-    <Route path="like" element={
-      <Activity/>
-    }/>
-    <Route path="explore" element={
-      <Explore/>
-    }/>
-    <Route path="newpost" element={
-      <NewPost
-        onAddPost = {addPost}
-        onCancelPost = {cancelPost}
-        />
-    }/>
-  </Routes>
+  // function renderMain(page){
+  //   switch(page){
+  //     case "home": 
+  //       return <Home
+  //       currentUserId = {currentUserId}
+  //       posts = {posts} 
+  //       users = {users}
+  //       comments = {comments}
+  //       likes = {likes}
+  //       onLike = {addLike}
+  //       onUnlike = {removeLike}
+  //       onComment = {addComment}
+  //       />;
+  //     case "explore": return <Explore/>;
+  //     case "newpost": return <NewPost
+  //       onAddPost = {addPost}
+  //       onCancelPost = {cancelPost}
+  //     />;
+  //     case "like": return <Activity/>;
+  //     case "profile": return <Profile
+  //       currentUserId = {currentUserId}
+  //       posts = {posts} 
+  //       users = {users}
+  //       comments = {comments}
+  //       followers = {followers}
+  //       likes = {likes}
+  //       onLike = {addLike}
+  //       onUnlike = {removeLike}
+  //       />;
+  //   }
+  //   setPage(page);
+  // }
   
   return (
       <>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <Seo />
-        <Router>
          <div className={css.container}>
             <Header/>
             <main role="main" className="wrapper">
-              {renderMain(page)}
+              <Router>
+              <Routes>
+                  <Route path="/" element={
+                      <Home
+                      currentUserId = {currentUserId}
+                      posts = {posts} 
+                      users = {users}
+                      comments = {comments}
+                      likes = {likes}
+                      onLike = {addLike}
+                      onUnlike = {removeLike}
+                      onComment = {addComment}
+                    />
+                    }></Route>
+                  <Route path="profile" element={
+                      <Profile
+                      currentUserId = {currentUserId}
+                      posts = {posts} 
+                      users = {users}
+                      comments = {comments}
+                      followers = {followers}
+                      likes = {likes}
+                      onLike = {addLike}
+                      onUnlike = {removeLike}
+                    />
+                    }/>
+                  <Route path="like" element={
+                    <Activity/>
+                  }/>
+                  <Route path="explore" element={
+                    <Explore/>
+                  }/>
+                  <Route path="newpost" element={
+                    <NewPost
+                      onAddPost = {addPost}
+                      onCancelPost = {cancelPost}
+                      />
+                  }/>
+                </Routes>
+              </Router>
             </main>
-            <Navbar handleNavChange={setPage}/>
+            <Navbar/>
           </div>
-        </Router>
       </>
   );
   
