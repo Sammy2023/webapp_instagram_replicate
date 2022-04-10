@@ -113,6 +113,33 @@ export default function App (){
     setPage(page);
   }
   
+  <Routes>
+    <Route path="/" element={
+        <Home
+        currentUserId = {currentUserId}
+        posts = {posts} 
+        users = {users}
+        comments = {comments}
+        likes = {likes}
+        onLike = {addLike}
+        onUnlike = {removeLike}
+        onComment = {addComment}
+      />
+      }></Route>
+    <Route path="profile" element={
+        <Profile
+        currentUserId = {currentUserId}
+        posts = {posts} 
+        users = {users}
+        comments = {comments}
+        likes = {likes}
+        onLike = {addLike}
+        onUnlike = {removeLike}
+        onComment = {addComment}
+      />
+      }></Route>
+  </Routes>
+  
   return (
       <>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
