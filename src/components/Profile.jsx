@@ -1,6 +1,7 @@
 import React from "react";
 import css from "../styles/Profile.module.css";
 import PostThumbnail from "./PostThumbnail.jsx";
+import {Link} from "react-router-dom";
 
 function Profile(props) {
   const { currentUserId, users, posts, followers } = props;
@@ -40,7 +41,7 @@ function Profile(props) {
         {posts
           .filter((post) => post.userId === currentUserId)
           .map((post) => (
-            <Link>
+            <Link key={post.id} to={"/" + post.id}>
               <PostThumbnail post={post} />
             </Link>
           ))}

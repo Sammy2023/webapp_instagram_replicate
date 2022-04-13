@@ -26,7 +26,8 @@ function Home(props) {
   
   return (
     <div className={css.homeContainer}>
-      {postId != "/" ? posts.filter((post) => post.id == postId)
+      hello
+      {postId != undefined ? posts.filter((post) => post.id == postId)
        .map(post =>
        <Post 
              key= {post.id}

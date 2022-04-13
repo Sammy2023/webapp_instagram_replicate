@@ -77,40 +77,6 @@ export default function App (){
     setPage('home');
   }
   
-  
-  // function renderMain(page){
-  //   switch(page){
-  //     case "home": 
-  //       return <Home
-  //       currentUserId = {currentUserId}
-  //       posts = {posts} 
-  //       users = {users}
-  //       comments = {comments}
-  //       likes = {likes}
-  //       onLike = {addLike}
-  //       onUnlike = {removeLike}
-  //       onComment = {addComment}
-  //       />;
-  //     case "explore": return <Explore/>;
-  //     case "newpost": return <NewPost
-  //       onAddPost = {addPost}
-  //       onCancelPost = {cancelPost}
-  //     />;
-  //     case "like": return <Activity/>;
-  //     case "profile": return <Profile
-  //       currentUserId = {currentUserId}
-  //       posts = {posts} 
-  //       users = {users}
-  //       comments = {comments}
-  //       followers = {followers}
-  //       likes = {likes}
-  //       onLike = {addLike}
-  //       onUnlike = {removeLike}
-  //       />;
-  //   }
-  //   setPage(page);
-  // }
-  
   return (
       <Router>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
