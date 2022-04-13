@@ -23,8 +23,8 @@ function Profile(props) {
         <div>
           <p>{currentUser[0].id}</p>
           {currentUserId != userId ? (followers.some((follower) => follower.userId === currentUserId) ?
-              <button className={css.unfollowBtn} onClick={onUnFollow(currentUserId, userId)}> unfollow</button> : 
-              <button className={css.followBtn} onClick={onFollow(currentUserId, userId)}> follow</button>) : ""
+              <button className={css.unfollowBtn} onclick={onUnFollow(currentUserId, userId)}> unfollow</button> : 
+              <button className={css.followBtn} onclick={onFollow(currentUserId, userId)}> follow</button>) : ""
           }
         </div>
       </div>
