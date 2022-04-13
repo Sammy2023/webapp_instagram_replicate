@@ -5,16 +5,15 @@ import {Link, useParams} from "react-router-dom";
 
 function Profile(props) {
   const { currentUserId, users, posts, followers } = props;
-  const currentUser = users.filter((user) => user.id === currentUserId);
-  const currentPost = posts.filter((post) => post.userId === currentUserId);
-  
   const {userId} = useParams();
-  
+  const currentUser = users.filter((user) => user.id === userId);
+  const currentPost = posts.filter((post) => post.userId === userId);
+    
   const followYou = followers.filter(
-    (follower) => follower.userId === currentUserId
+    (follower) => follower.userId === userId
   );
   const following = followers.filter(
-    (follower) => follower.followerId === currentUserId
+    (follower) => follower.followerId === userId
   );
   return (
     <div className={css.profileContainer}>
@@ -42,7 +41,7 @@ function Profile(props) {
       </div>
       <div className={css.posts}>
         {posts
-          .filter((post) => post.userId === currentUserId)
+          .filter((post) => post.userId === userId)
           .map((post) => (
             <Link key={post.id} to={"/" + post.id}>
               <PostThumbnail post={post} />

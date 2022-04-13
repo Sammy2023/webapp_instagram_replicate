@@ -2,14 +2,13 @@ import React from 'react';
 import css from "../styles/Post.module.css";
 import timestamp from "../util/timespan.js";
 import { useState } from 'react';
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
 function Post(props){
   
   const {user, post, likes, comments, onLike, onUnlike, onComment} = props;
   const [comment, setComment] = useState('');
   const [toggleComment, setToggleComment] = useState(false); // comment is hidden
-  
   
   const commentList = comments.map((comment) => 
      <li key={comment.userId}>
@@ -63,7 +62,7 @@ function Post(props){
           <b> {likes.count} likes</b>
         </div>
        <div>
-          <Link to="">
+          <Link to={"profile/"+ post.userId}>
             <b>{post.userId}</b> 
           </Link>
           {post.desc}
