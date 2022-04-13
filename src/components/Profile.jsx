@@ -4,7 +4,7 @@ import PostThumbnail from "./PostThumbnail.jsx";
 import {Link, useParams} from "react-router-dom";
 
 function Profile(props) {
-  const { currentUserId, users, posts, followers } = props;
+  const {currentUserId, users, posts, followers} = props;
   const {userId} = useParams();
   const currentUser = users.filter((user) => user.id === userId);
   const currentPost = posts.filter((post) => post.userId === userId);
@@ -20,6 +20,7 @@ function Profile(props) {
       <div className={css.profileBar}>
         <img src={currentUser[0].photo} />
         <p>{currentUser[0].id}</p>
+        <button>{currentUser.find()}</button>
       </div>
       <div className={css.profileDetail}>
         <div>{currentUser[0].name}</div>

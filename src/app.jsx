@@ -113,6 +113,8 @@ export default function App (){
                       likes = {likes}
                       onLike = {addLike}
                       onUnlike = {removeLike}
+                      onFollow = {addFollower}
+                      onUnFollow = {removeFollower}
                     />
                     }/>
                   <Route path="like" element={
