@@ -26,7 +26,7 @@ function Home(props) {
   
   return (
     <div className={css.homeContainer}>
-      {postId == undefined ? posts.sort((a,b)=>new Date(b.datetime) - new Date(a.datetime))
+      {postId === undefined ? posts.sort((a,b)=>new Date(b.datetime) - new Date(a.datetime))
        .map(post =>
            <Post 
              key= {post.id}
