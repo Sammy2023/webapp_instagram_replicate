@@ -77,6 +77,13 @@ export default function App (){
     setPage('home');
   }
   
+  function addFollower(userId, followerId){
+	// use concat
+  }
+  function removeFollower(userId, followerId){
+    // use filter
+  }
+  
   return (
       <Router>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>

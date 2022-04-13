@@ -2,6 +2,7 @@ import React from 'react';
 import css from "../styles/Post.module.css";
 import timestamp from "../util/timespan.js";
 import { useState } from 'react';
+import { Link } from "react-router-dom"; 
 
 function Post(props){
   
@@ -62,7 +63,10 @@ function Post(props){
           <b> {likes.count} likes</b>
         </div>
        <div>
-          <b>{post.userId}</b> {post.desc}
+          <Link to="">
+            <b>{post.userId}</b> 
+          </Link>
+          {post.desc}
         </div>
         <div className={css.commentlist}> 
           <ul>

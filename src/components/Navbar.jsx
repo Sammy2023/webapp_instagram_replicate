@@ -16,7 +16,7 @@ function Navbar(props){
   return (
   <nav className={css.navbar}>
     <div className={css.navItem}>
-      <Link to={"/" + postId}>
+      <Link to="/">
         <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/home.svg?v=1647286968967"/>
       </Link>
     </div>
@@ -36,7 +36,7 @@ function Navbar(props){
       </Link>
     </div>
     <div className={css.navItem}>
-      <Link to="profile/:props.currentUserId">
+      <Link to={"profile/" + props.}>
         <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/profile.svg?v=1647287005893"/>
       </Link>
     </div>
