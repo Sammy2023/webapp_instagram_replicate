@@ -83,6 +83,7 @@ export default function App (){
     
     setFollowers(followers.concat({userId, followerId}));
   }
+  
   function removeFollower(userId, followerId){
     // use filter
     console.log(userId);
