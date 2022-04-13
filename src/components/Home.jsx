@@ -26,7 +26,19 @@ function Home(props) {
   
   return (
     <div className={css.homeContainer}>
-      {posts.sort((a,b)=>new Date(b.datetime) - new Date(a.datetime))
+      {postId != "/" ? posts.filter((post) => post.id == postId)
+       .map(post =>
+       <Post 
+             key= {post.id}
+             user={findUser(post, users)} 
+             likes = {findLikes(post, likes)} 
+             post = {post}
+             comments = {findComments(post, comments)}
+             onLike = {onLike}
+             onUnlike = {onUnlike}
+             onComment = {onComment}
+      />)
+      : posts.sort((a,b)=>new Date(b.datetime) - new Date(a.datetime))
        .map(post =>
            <Post 
              key= {post.id}
