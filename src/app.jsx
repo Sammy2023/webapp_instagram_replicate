@@ -91,7 +91,19 @@ export default function App (){
             <Header/>
             <main role="main" className="wrapper">
               <Routes>
-                  <Route path="/:postId" element={
+                  <Route path="/" element={
+                      <Home
+                      currentUserId = {currentUserId}
+                      posts = {posts} 
+                      users = {users}
+                      comments = {comments}
+                      likes = {likes}
+                      onLike = {addLike}
+                      onUnlike = {removeLike}
+                      onComment = {addComment}
+                    />
+                    }></Route>
+                   <Route path=":postId" element={
                       <Home
                       currentUserId = {currentUserId}
                       posts = {posts} 
