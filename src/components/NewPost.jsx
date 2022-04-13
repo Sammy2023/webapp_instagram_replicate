@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import css from '../styles/NewPost.module.css';
 import FileLoader from '../util/FileLoader.js';
+import {
+  useNavigate
+} from "react-router-dom";
 
 function NewPost(props) {
   const [dragging, setDragging] = useState(false); // to show a dragging effect
   const [desc, setDesc] = useState('');
   const [photo, setPhoto] = useState(null);
   const [error, setError] = useState(''); // to show an error message
-  const {onAddPost, onCancelPost} = props;
+  const {onAddPost} = props;
+  const navigate = useNavigate();
 
   function handleFileDragEnter(e){
     setDragging(true);
@@ -55,7 +59,7 @@ function NewPost(props) {
   }
   function handleCancel(){
     // TODO: Notify the parent about the cancellation
-    onCancelPost()
+    navigate("/");
   }
   return (
     <div className={css.newPostContainer}>

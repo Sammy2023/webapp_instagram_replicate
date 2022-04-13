@@ -77,9 +77,6 @@ export default function App (){
     setPage('home');
   }
   
-  function cancelPost() {
-    setPage("home");
-  }
   // function renderMain(page){
   //   switch(page){
   //     case "home": 
