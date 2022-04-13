@@ -62,7 +62,7 @@ function Post(props){
           <b> {likes.count} likes</b>
         </div>
        <div>
-          <Link to={"profile/"+ post.userId}>
+          <Link to={"/profile/"+ post.userId}>
             <b>{post.userId}</b> 
           </Link>
           {post.desc}
