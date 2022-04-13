@@ -1,7 +1,7 @@
 import React from 'react';
 import css from '../styles/Navbar.module.css';
 import {
-  Link
+  Link, useParams
 } from "react-router-dom";
 
 function Navbar(props){
@@ -10,11 +10,13 @@ function Navbar(props){
         props.handleNavChange(page);
     }
   }
+  const {postId} = useParams();
+  console.log("this is my postId:" + postId);
   
   return (
   <nav className={css.navbar}>
     <div className={css.navItem}>
-      <Link to="/">
+      <Link to="/:postId">
         <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/home.svg?v=1647286968967"/>
       </Link>
     </div>

@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 function Home(props) {
   const {posts, users, likes, comments, currentUserId, onLike, onUnlike, onComment} = props;
   const {postId} = useParams();
+  console.log("postId: " + postId);
   
   function findUser(post, users){
     return users.find((user) => user.id === post.userId);
@@ -26,8 +27,7 @@ function Home(props) {
   
   return (
     <div className={css.homeContainer}>
-      hello
-      {postId != undefined ? posts.filter((post) => post.id == postId)
+      {postId !== undefined ? posts.filter((post) => post.id == postId)
        .map(post =>
        <Post 
              key= {post.id}

@@ -84,7 +84,7 @@ export default function App (){
             <Header/>
             <main role="main" className="wrapper">
               <Routes>
-                  <Route path=":postId" element={
+                  <Route path="/:postId" element={
                       <Home
                       currentUserId = {currentUserId}
                       posts = {posts} 
