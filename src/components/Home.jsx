@@ -1,9 +1,11 @@
 import React from 'react';
 import Post from './Post.jsx'
 import css from "../styles/Home.module.css";
+import { useParams } from 'react-router-dom';
 
 function Home(props) {
   const {posts, users, likes, comments, currentUserId, onLike, onUnlike, onComment} = props;
+  const {postId} = useParams();
   
   function findUser(post, users){
     return users.find((user) => user.id === post.userId);

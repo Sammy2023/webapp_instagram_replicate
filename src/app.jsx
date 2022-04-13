@@ -10,8 +10,6 @@ import Profile from "./components/Profile.jsx";
 import initialStore from './util/initialStore.js';
 import { useState } from 'react';
 import uniqueId from './util/uniqueId.js';
-import { useParams } from 'react-router-dom';
-
 
 
 // Import and apply global CSS stylesheet
@@ -79,9 +77,6 @@ export default function App (){
     setPage('home');
   }
   
-  function Home(){
-    const {postId} = useParams();
-  }
   
   // function renderMain(page){
   //   switch(page){
