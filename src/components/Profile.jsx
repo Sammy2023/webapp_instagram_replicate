@@ -19,8 +19,13 @@ function Profile(props) {
     <div className={css.profileContainer}>
       <div className={css.profileBar}>
         <img src={currentUser[0].photo} />
-        <p>{currentUser[0].id}</p>
-        <button>{currentUser.find()}</button>
+        <div>
+          <p>{currentUser[0].id}</p>
+          <button>{followers.some((follower) => follower.userId === currentUserId) ?
+              "unfollow" : 
+              "follow"
+          }</button>
+        </div>
       </div>
       <div className={css.profileDetail}>
         <div>{currentUser[0].name}</div>
