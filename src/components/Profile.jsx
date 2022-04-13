@@ -1,12 +1,15 @@
 import React from "react";
 import css from "../styles/Profile.module.css";
 import PostThumbnail from "./PostThumbnail.jsx";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 function Profile(props) {
   const { currentUserId, users, posts, followers } = props;
   const currentUser = users.filter((user) => user.id === currentUserId);
   const currentPost = posts.filter((post) => post.userId === currentUserId);
+  
+  const {userId} = useParams();
+  
   const followYou = followers.filter(
     (follower) => follower.userId === currentUserId
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import css from '../styles/Navbar.module.css';
 import {
-  Link, useParams
+  Link, userParams
 } from "react-router-dom";
 
 function Navbar(props){
@@ -14,7 +14,7 @@ function Navbar(props){
   return (
   <nav className={css.navbar}>
     <div className={css.navItem}>
-      <Link to="/">
+      <Link to="/:postId">
         <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/home.svg?v=1647286968967"/>
       </Link>
     </div>
@@ -34,7 +34,7 @@ function Navbar(props){
       </Link>
     </div>
     <div className={css.navItem}>
-      <Link to="profile">
+      <Link to="profile/:props.currentUserId">
         <img src="https://cdn.glitch.global/9bff44da-05b9-4d83-b4f6-75df2a433bfe/profile.svg?v=1647287005893"/>
       </Link>
     </div>

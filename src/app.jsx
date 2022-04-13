@@ -84,7 +84,7 @@ export default function App (){
             <Header/>
             <main role="main" className="wrapper">
               <Routes>
-                  <Route path=":postId" element={
+                  <Route path="/:postId" element={
                       <Home
                       currentUserId = {currentUserId}
                       posts = {posts} 
@@ -96,7 +96,7 @@ export default function App (){
                       onComment = {addComment}
                     />
                     }></Route>
-                  <Route path="profile" element={
+                  <Route path="profile/:userId" element={
                       <Profile
                       currentUserId = {currentUserId}
                       posts = {posts} 
@@ -121,7 +121,7 @@ export default function App (){
                   }/>
                 </Routes>
             </main>
-            <Navbar/>
+            <Navbar currentUserId = {currentUserId}/>
           </div>
       </Router>
   );
