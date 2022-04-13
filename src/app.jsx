@@ -9,7 +9,9 @@ import NewPost from "./components/NewPost.jsx";
 import Profile from "./components/Profile.jsx";
 import initialStore from './util/initialStore.js';
 import { useState } from 'react';
-import uniqueId from './util/uniqueId.js'
+import uniqueId from './util/uniqueId.js';
+import { useParams } from 'react-router-dom';
+
 
 
 // Import and apply global CSS stylesheet
@@ -77,6 +79,10 @@ export default function App (){
     setPage('home');
   }
   
+  function Home(){
+    const {postId} = useParams();
+  }
+  
   // function renderMain(page){
   //   switch(page){
   //     case "home": 
@@ -117,7 +123,7 @@ export default function App (){
             <Header/>
             <main role="main" className="wrapper">
               <Routes>
-                  <Route path="/" element={
+                  <Route path=":postId" element={
                       <Home
                       currentUserId = {currentUserId}
                       posts = {posts} 
@@ -150,7 +156,6 @@ export default function App (){
                   <Route path="newpost" element={
                     <NewPost
                       onAddPost = {addPost}
-                      onCancelPost = {cancelPost}
                       />
                   }/>
                 </Routes>
