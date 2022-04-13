@@ -4,7 +4,7 @@ import PostThumbnail from "./PostThumbnail.jsx";
 import {Link, useParams} from "react-router-dom";
 
 function Profile(props) {
-  const {currentUserId, users, posts, followers} = props;
+  const {currentUserId, users, posts, followers, onFollow, onUnFollow} = props;
   const {userId} = useParams();
   const currentUser = users.filter((user) => user.id === userId);
   const currentPost = posts.filter((post) => post.userId === userId);
@@ -21,10 +21,10 @@ function Profile(props) {
         <img src={currentUser[0].photo} />
         <div>
           <p>{currentUser[0].id}</p>
-          <button>{followers.some((follower) => follower.userId === currentUserId) ?
-              "unfollow" : 
-              "follow"
-          }</button>
+          {followers.some((follower) => follower.userId === currentUserId) ?
+              <button className={css.unfollowBtn}> unfollow</button> : 
+              <button className={css.followBtn}> follow</button>
+          }
         </div>
       </div>
       <div className={css.profileDetail}>
