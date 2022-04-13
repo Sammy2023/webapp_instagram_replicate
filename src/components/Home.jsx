@@ -26,9 +26,9 @@ function Home(props) {
   
   return (
     <div className={css.homeContainer}>
-      {postId !== undefined ? posts.filter((post) => post.id == postId)
+      {postId == undefined ? posts.sort((a,b)=>new Date(b.datetime) - new Date(a.datetime))
        .map(post =>
-       <Post 
+           <Post 
              key= {post.id}
              user={findUser(post, users)} 
              likes = {findLikes(post, likes)} 
@@ -37,10 +37,10 @@ function Home(props) {
              onLike = {onLike}
              onUnlike = {onUnlike}
              onComment = {onComment}
-      />)
-      : posts.sort((a,b)=>new Date(b.datetime) - new Date(a.datetime))
+        />)
+        :posts.filter((post) => post.id == postId)
        .map(post =>
-           <Post 
+       <Post 
              key= {post.id}
              user={findUser(post, users)} 
              likes = {findLikes(post, likes)} 
