@@ -8,7 +8,7 @@ function Profile(props) {
   const {userId} = useParams();
   const currentUser = users.filter((user) => user.id === userId);
   const currentPost = posts.filter((post) => post.userId === userId);
-  let followerCondition = followers.filter((follower) => follower.followerId == currentUserId)
+  let followerCondition = followers.filter((follower) => follower.followerId == currentUserId && follower.userId == userId)
   .length === 0 ? false : true;
     
   const followYou = followers.filter(
@@ -20,10 +20,12 @@ function Profile(props) {
   
   function followBtnToggle(){
     onFollow(currentUserId, userId);
+    followerCondition = true;
   }
   
   function unfollowBtnToggle(){
     onUnFollow(currentUserId, userId);
+    followerCondition = true;
   }
   
   return (
@@ -32,9 +34,10 @@ function Profile(props) {
         <img src={currentUser[0].photo} />
         <div>
           <p>{currentUser[0].id}</p>
-          {currentUserId != userId ? (followerCondition ?
-              <button className={css.unfollowBtn} onClick={unfollowBtnToggle}> unfollow</button> : 
-              <button className={css.followBtn} onClick={followBtnToggle}> follow</button>) : ""
+          { !(currentUserId == userId) ?
+              <button className={followerCondition ? css.unfollowBtn : css.followBtn} onClick={followerCondition ? 
+                unfollowBtnToggle : followBtnToggle}> {followerCondition ? "unfollow" : "follow"}</button> 
+              : ""
           }
         </div>
       </div>
