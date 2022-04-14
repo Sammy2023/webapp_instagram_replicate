@@ -40,7 +40,9 @@ function Post(props){
       <div  className={css.userBar}>
         <img src={user.photo}/>
         <div>
-          {user.id}
+          <Link className={css.profileUrlLink} to={"/profile/"+ post.userId}>
+            {user.id}
+          </Link>
         </div>
       </div>
       <div className={css.postPhoto}>
@@ -61,8 +63,8 @@ function Post(props){
         <div className={css.likeCount}>
           <b> {likes.count} likes</b>
         </div>
-       <div className={css.}>
-          <Link to={"/profile/"+ post.userId}>
+       <div>
+          <Link className={css.profileUrlLink} to={"/profile/"+ post.userId}>
             <b>{post.userId}</b> 
           </Link>
           {post.desc}

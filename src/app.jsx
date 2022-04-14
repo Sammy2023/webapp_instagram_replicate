@@ -80,14 +80,19 @@ export default function App (){
   function addFollower(userId, followerId){
 	// use concat
     console.log(userId);
-    
-    setFollowers(followers.concat({userId, followerId}));
+    const follower = {
+      userId: userId,
+      followerId: followerId
+    }
+    setFollowers(followers.concat(follower));
   }
   
   function removeFollower(userId, followerId){
     // use filter
     console.log(userId);
-    // setFollowers(followers.filter((follower) => follower.userId != userId))
+    setFollowers(followers.filter((follower) => 
+        (follower.userId == userId && follower.followerId == followerId)
+      ))
   }
   
   return (
