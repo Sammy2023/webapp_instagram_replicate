@@ -89,10 +89,9 @@ export default function App (){
   
   function removeFollower(userId, followerId){
     // use filter
-    console.log(userId);
     setFollowers(followers.filter((follower) => 
-        (follower.userId == userId && follower.followerId == followerId)
-      ))
+        !(follower.userId === userId && follower.followerId === followerId)
+      ));
   }
   
   return (
