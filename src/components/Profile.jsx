@@ -16,6 +16,13 @@ function Profile(props) {
     (follower) => follower.followerId === userId
   );
   
+  function followBtnToggle(){
+    onFollow(currentUserId, userId);
+  }
+  
+  function unfollowBtnToggle(){
+    onUnFollow(currentUserId, userId);
+  }
   
   return (
     <div className={css.profileContainer}>
@@ -24,8 +31,8 @@ function Profile(props) {
         <div>
           <p>{currentUser[0].id}</p>
           {currentUserId != userId ? (followers.some((follower) => follower.followerId == currentUserId  && follower.userId == userId) ?
-              <button className={css.unfollowBtn} onClick={onUnFollow(currentUserId, userId)}> unfollow</button> : 
-              <button className={css.followBtn} onClick={onFollow(currentUserId, userId)}> follow</button>) : ""
+              <button className={css.unfollowBtn} onClick={unfollowBtnToggle}> unfollow</button> : 
+              <button className={css.followBtn} onClick={followBtnToggle}> follow</button>) : ""
           }
         </div>
       </div>
