@@ -8,7 +8,8 @@ function Profile(props) {
   const {userId} = useParams();
   const currentUser = users.filter((user) => user.id === userId);
   const currentPost = posts.filter((post) => post.userId === userId);
-  let followerCondition = followers.some((follower) => follower.followerId == currentUserId  && follower.userId == userId);
+  let followerCondition = followers.filter((follower) => follower.followerId == currentUserId)
+  .length === 0 ? false : true;
     
   const followYou = followers.filter(
     (follower) => follower.userId === userId
@@ -19,14 +20,10 @@ function Profile(props) {
   
   function followBtnToggle(){
     onFollow(currentUserId, userId);
-    followerCondition = !(followerCondition);
-    console.log(followerCondition);
   }
   
   function unfollowBtnToggle(){
     onUnFollow(currentUserId, userId);
-    followerCondition = !(followerCondition);
-    console.log(followerCondition);
   }
   
   return (
