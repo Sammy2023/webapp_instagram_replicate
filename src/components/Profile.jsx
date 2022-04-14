@@ -16,13 +16,14 @@ function Profile(props) {
     (follower) => follower.followerId === userId
   );
   
+  
   return (
     <div className={css.profileContainer}>
       <div className={css.profileBar}>
         <img src={currentUser[0].photo} />
         <div>
           <p>{currentUser[0].id}</p>
-          {currentUserId != userId ? (followers.some((follower) => follower.followerId == userId) ?
+          {currentUserId != userId ? (followers.some((follower) => follower.followerId == currentUserId  && follower.userId == userId) ?
               <button className={css.unfollowBtn} onClick={onUnFollow(currentUserId, userId)}> unfollow</button> : 
               <button className={css.followBtn} onClick={onFollow(currentUserId, userId)}> follow</button>) : ""
           }
