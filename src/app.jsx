@@ -133,7 +133,7 @@ export default function App (){
                     }></Route>
                   <Route path="profile/:userId" element={
                       <Profile
-                      *
+                      /*
                       currentUserId = {currentUserId}
                       posts = {posts} 
                       users = {users}
@@ -144,6 +144,7 @@ export default function App (){
                       onUnlike = {removeLike}
                       onFollow = {addFollower}
                       onUnFollow = {removeFollower}
+                      */
                     />
                     }/>
                   <Route path="like" element={
@@ -154,12 +155,18 @@ export default function App (){
                   }/>
                   <Route path="newpost" element={
                     <NewPost
+                      /*
                       onAddPost = {addPost}
+                      */
                       />
                   }/>
                 </Routes>
             </main>
-            <Navbar currentUserId = {currentUserId}/>
+            <Navbar
+              /*
+              currentUserId = {currentUserId}
+              */
+            />
           </div>
         </StoreContextProvider>
       </Router>

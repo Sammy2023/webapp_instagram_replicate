@@ -5,6 +5,7 @@ import {Link, useParams} from "react-router-dom";
 
 function Profile(props) {
   const {currentUserId, users, posts, followers, onFollow, onUnFollow} = props;
+  console.log(users);
   const {userId} = useParams();
   const currentUser = users.filter((user) => user.id === userId);
   const currentPost = posts.filter((post) => post.userId === userId);

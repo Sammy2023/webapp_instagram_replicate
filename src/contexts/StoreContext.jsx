@@ -6,7 +6,9 @@ import uniqueId from "../util/uniqueId.js";
 export const StoreContext = React.createContext();
 
 function StoreContextProvider(props) {
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState(
+    JSON.parse(localStorage.getItem("currentUserId")) ||
+    'home');
   const [currentUserId, setCurrentUserId] = useState(
     JSON.parse(localStorage.getItem("currentUserId")) ||
       initialStore.currentUserId
@@ -84,6 +86,7 @@ function StoreContextProvider(props) {
     // use filter
     setFollowers(followers.filter((follower) => follower.userId != followerId));
   }
+  
   return (
     <StoreContext.Provider
       value={{
