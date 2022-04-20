@@ -10,8 +10,6 @@ function Navbar(props){
         props.handleNavChange(page);
     }
   }
-  const {postId} = useParams();
-  console.log(postId == undefined);
   
   return (
   <nav className={css.navbar}>
