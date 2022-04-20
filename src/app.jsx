@@ -10,6 +10,7 @@ import Profile from "./components/Profile.jsx";
 import initialStore from './util/initialStore.js';
 import { useState } from 'react';
 import uniqueId from './util/uniqueId.js';
+import StoreContextProvider from './contexts/StoreContext.js';
 
 
 // Import and apply global CSS stylesheet
@@ -95,7 +96,8 @@ export default function App (){
   }
   
   return (
-      <Router>
+    <Router>
+      <StoreContextProvider>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
          <div className={css.container}>
             <Header/>
@@ -154,6 +156,7 @@ export default function App (){
             </main>
             <Navbar currentUserId = {currentUserId}/>
           </div>
+        </StoreContextProvider>
       </Router>
   );
   
