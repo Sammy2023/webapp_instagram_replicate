@@ -46,6 +46,7 @@ export default function App (){
       postId,
       datetime: new Date().toISOString(),
     };
+    console.log(likes.concat(like));
     setLikes(likes.concat(like));
     
   }
@@ -85,7 +86,8 @@ export default function App (){
       followerId: userId
     }
     setFollowers(followers.concat(follower));
-    console.log(followers);
+    
+    console.log(followers.concat(follower));
   }
   
   function removeFollower(userId, followerId){
