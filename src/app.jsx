@@ -86,7 +86,7 @@ export default function App (){
       followerId: userId
     }
     setFollowers(followers.concat(follower));
-    
+    console.log(followers);
     console.log(followers.concat(follower));
   }
   
