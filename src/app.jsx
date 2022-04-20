@@ -10,7 +10,7 @@ import Profile from "./components/Profile.jsx";
 import initialStore from './util/initialStore.js';
 import { useState } from 'react';
 import uniqueId from './util/uniqueId.js';
-import StoreContextProvider from './contexts/StoreContext.js';
+import StoreContextProvider from './contexts/StoreContext.jsx';
 
 
 // Import and apply global CSS stylesheet
@@ -46,8 +46,8 @@ export default function App (){
       postId,
       datetime: new Date().toISOString(),
     };
-    
     setLikes(likes.concat(like));
+    
   }
   
   function removeLike(postId){
