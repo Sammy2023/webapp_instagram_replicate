@@ -32,70 +32,68 @@ import {
 // App function that is reflected across the site
 export default function App (){
   
-  const [page, setPage] = useState('home');
-  const [currentUserId, setCurrentUserId] = useState(initialStore.currentUserId);
-  const [users, setUsers] = useState(initialStore.users);
-  const [posts, setPosts] = useState(initialStore.posts);
-  const [likes, setLikes] = useState(initialStore.likes);
-  const [comments, setComments] = useState(initialStore.comments);
-  const [followers, setFollowers] = useState(initialStore.followers);
+//   const [page, setPage] = useState('home');
+//   const [currentUserId, setCurrentUserId] = useState(initialStore.currentUserId);
+//   const [users, setUsers] = useState(initialStore.users);
+//   const [posts, setPosts] = useState(initialStore.posts);
+//   const [likes, setLikes] = useState(initialStore.likes);
+//   const [comments, setComments] = useState(initialStore.comments);
+//   const [followers, setFollowers] = useState(initialStore.followers);
   
-  function addLike(postId){
-    const like ={
-      userId: currentUserId,
-      postId,
-      datetime: new Date().toISOString(),
-    };
-    console.log(likes.concat(like));
-    setLikes(likes.concat(like));
+//   function addLike(postId){
+//     const like ={
+//       userId: currentUserId,
+//       postId,
+//       datetime: new Date().toISOString(),
+//     };
+//     const newLikes = likes.concat(like);
+//     setLikes(newLikes);
+//   }
+  
+//   function removeLike(postId){
+//     setLikes(likes.filter((like) => !(like.userId === currentUserId && like.postId === postId)));
+//   }
+  
+//   function addComment(postId, text){
+//     const comment = {
+//       userId: currentUserId,
+//       postId,
+//       text,
+//       datetime: new Date().toISOString(),
+//     }
     
-  }
+//     setComments(comments.concat(comment));
+//   }
   
-  function removeLike(postId){
-    setLikes(likes.filter((like) => !(like.userId === currentUserId && like.postId === postId)));
-  }
-  
-  function addComment(postId, text){
-    const comment = {
-      userId: currentUserId,
-      postId,
-      text,
-      datetime: new Date().toISOString(),
-    }
+//   function addPost(photo, desc){
+//     const post = {
+//       userId: currentUserId,
+//       id: uniqueId('post'),
+//       datetime: new Date().toISOString(),
+//       photo: photo,
+//       desc: desc
+//     }
     
-    setComments(comments.concat(comment));
-  }
+//     setPosts(posts.concat(post))
+//     setPage('home');
+//   }
   
-  function addPost(photo, desc){
-    const post = {
-      userId: currentUserId,
-      id: uniqueId('post'),
-      datetime: new Date().toISOString(),
-      photo: photo,
-      desc: desc
-    }
-    
-    setPosts(posts.concat(post))
-    setPage('home');
-  }
+//   function addFollower(userId, followerId){
+// 	// use concat
+//     const follower = {
+//       userId: followerId,
+//       followerId: userId
+//     }
+//     setFollowers(followers.concat(follower));
+//     console.log(likes);
+//   }
   
-  function addFollower(userId, followerId){
-	// use concat
-    const follower = {
-      userId: followerId,
-      followerId: userId
-    }
-    setFollowers(followers.concat(follower));
-    console.log(followers);
-    console.log(followers.concat(follower));
-  }
-  
-  function removeFollower(userId, followerId){
-    // use filter
-    setFollowers(followers.filter((follower) => 
-        !(follower.userId === followerId && follower.followerId === userId)
-      ));
-  }
+//   function removeFollower(userId, followerId){
+//     // use filter
+//     setFollowers(followers.filter((follower) => 
+//         !(follower.userId === followerId && follower.followerId === userId)
+//       ));
+//   }
   
   return (
     <Router>
@@ -107,6 +105,7 @@ export default function App (){
               <Routes>
                   <Route path="/" element={
                       <Home
+                      /*
                       currentUserId = {currentUserId}
                       posts = {posts} 
                       users = {users}
@@ -115,10 +114,12 @@ export default function App (){
                       onLike = {addLike}
                       onUnlike = {removeLike}
                       onComment = {addComment}
+                      */
                     />
                     }></Route>
                    <Route path=":postId" element={
                       <Home
+                      /*
                       currentUserId = {currentUserId}
                       posts = {posts} 
                       users = {users}
@@ -127,10 +128,12 @@ export default function App (){
                       onLike = {addLike}
                       onUnlike = {removeLike}
                       onComment = {addComment}
+                      */
                     />
                     }></Route>
                   <Route path="profile/:userId" element={
                       <Profile
+                      *
                       currentUserId = {currentUserId}
                       posts = {posts} 
                       users = {users}
