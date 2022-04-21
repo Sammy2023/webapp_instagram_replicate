@@ -2,9 +2,15 @@ import React from 'react';
 import Post from './Post.jsx'
 import css from "../styles/Home.module.css";
 import { useParams } from 'react-router-dom';
+import { useContext } from 'react';
+import { StoreContext } from '../contexts/StoreContext.jsx';
 
 function Home(props) {
-  const {posts, users, likes, comments, currentUserId, onLike, onUnlike, onComment} = props;
+  let {
+    posts, users, comments, likes, currentUserId, 
+    addComment, addLike, removeLike
+  } = useContext(StoreContext);
+  
   const {postId} = useParams();
   
   function findUser(post, users){
@@ -34,9 +40,9 @@ function Home(props) {
              likes = {findLikes(post, likes)} 
              post = {post}
              comments = {findComments(post, comments)}
-             onLike = {onLike}
-             onUnlike = {onUnlike}
-             onComment = {onComment}
+             onComment={addComment} 
+             onLike={addLike}   
+             onUnlike={removeLike}
         />)
         :posts.filter((post) => post.id == postId)
        .map(post =>
@@ -46,9 +52,9 @@ function Home(props) {
              likes = {findLikes(post, likes)} 
              post = {post}
              comments = {findComments(post, comments)}
-             onLike = {onLike}
-             onUnlike = {onUnlike}
-             onComment = {onComment}
+             onComment={addComment} 
+             onLike={addLike}   
+             onUnlike={removeLike}
       />)}
     </div>
   );
