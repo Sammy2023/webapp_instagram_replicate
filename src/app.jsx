@@ -32,69 +32,6 @@ import {
 // App function that is reflected across the site
 export default function App (){
   
-//   const [page, setPage] = useState('home');
-//   const [currentUserId, setCurrentUserId] = useState(initialStore.currentUserId);
-//   const [users, setUsers] = useState(initialStore.users);
-//   const [posts, setPosts] = useState(initialStore.posts);
-//   const [likes, setLikes] = useState(initialStore.likes);
-//   const [comments, setComments] = useState(initialStore.comments);
-//   const [followers, setFollowers] = useState(initialStore.followers);
-  
-//   function addLike(postId){
-//     const like ={
-//       userId: currentUserId,
-//       postId,
-//       datetime: new Date().toISOString(),
-//     };
-//     const newLikes = likes.concat(like);
-//     setLikes(newLikes);
-//   }
-  
-//   function removeLike(postId){
-//     setLikes(likes.filter((like) => !(like.userId === currentUserId && like.postId === postId)));
-//   }
-  
-//   function addComment(postId, text){
-//     const comment = {
-//       userId: currentUserId,
-//       postId,
-//       text,
-//       datetime: new Date().toISOString(),
-//     }
-    
-//     setComments(comments.concat(comment));
-//   }
-  
-//   function addPost(photo, desc){
-//     const post = {
-//       userId: currentUserId,
-//       id: uniqueId('post'),
-//       datetime: new Date().toISOString(),
-//       photo: photo,
-//       desc: desc
-//     }
-    
-//     setPosts(posts.concat(post))
-//     setPage('home');
-//   }
-  
-//   function addFollower(userId, followerId){
-// 	// use concat
-//     const follower = {
-//       userId: followerId,
-//       followerId: userId
-//     }
-//     setFollowers(followers.concat(follower));
-//     console.log(likes);
-//   }
-  
-//   function removeFollower(userId, followerId){
-//     // use filter
-//     setFollowers(followers.filter((follower) => 
-//         !(follower.userId === followerId && follower.followerId === userId)
-//       ));
-//   }
-  
   return (
     <Router>
       <StoreContextProvider>
@@ -104,48 +41,13 @@ export default function App (){
             <main role="main" className="wrapper">
               <Routes>
                   <Route path="/" element={
-                      <Home
-                      /*
-                      currentUserId = {currentUserId}
-                      posts = {posts} 
-                      users = {users}
-                      comments = {comments}
-                      likes = {likes}
-                      onLike = {addLike}
-                      onUnlike = {removeLike}
-                      onComment = {addComment}
-                      */
-                    />
+                      <Home/>
                     }></Route>
                    <Route path=":postId" element={
-                      <Home
-                      /*
-                      currentUserId = {currentUserId}
-                      posts = {posts} 
-                      users = {users}
-                      comments = {comments}
-                      likes = {likes}
-                      onLike = {addLike}
-                      onUnlike = {removeLike}
-                      onComment = {addComment}
-                      */
-                    />
+                      <Home/>
                     }></Route>
                   <Route path="profile/:userId" element={
-                      <Profile
-                      /*
-                      currentUserId = {currentUserId}
-                      posts = {posts} 
-                      users = {users}
-                      comments = {comments}
-                      followers = {followers}
-                      likes = {likes}
-                      onLike = {addLike}
-                      onUnlike = {removeLike}
-                      onFollow = {addFollower}
-                      onUnFollow = {removeFollower}
-                      */
-                    />
+                      <Profile/>
                     }/>
                   <Route path="like" element={
                     <Activity/>
