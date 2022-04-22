@@ -3,10 +3,13 @@ import css from "../styles/Post.module.css";
 import timestamp from "../util/timespan.js";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
+import { useContext } from 'react';
+import { StoreContext } from '../contexts/StoreContext.jsx';
 
 function Post(props){
-  
+    
   const {user, post, likes, comments, onLike, onUnlike, onComment} = props;
+  
   const [comment, setComment] = useState('');
   const [toggleComment, setToggleComment] = useState(false); // comment is hidden
   
