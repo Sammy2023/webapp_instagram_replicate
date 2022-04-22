@@ -15,10 +15,10 @@ function Profile(props) {
     removeFollower,
   } = useContext(StoreContext);
 
-  console.log(users);
   const { userId } = useParams();
-  const currentUser = users.filter((user) => user.id === userId);
-  const currentPost = posts.filter((post) => post.userId === userId);
+  const currentUser = users.filter((user) => user.id == userId);
+  console.log(userId);
+  const currentPost = posts.filter((post) => post.userId == userId);
   let followerCondition =
     followers.filter(
       (follower) =>
@@ -27,7 +27,7 @@ function Profile(props) {
       ? false
       : true;
 
-  const followYou = followers.filter((follower) => follower.userId === userId);
+  const followYou = followers.filter((follower) => follower.userId == userId);
   const following = followers.filter(
     (follower) => follower.followerId === userId
   );
