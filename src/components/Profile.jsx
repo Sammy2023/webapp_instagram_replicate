@@ -41,7 +41,7 @@ function Profile(props) {
     removeFollower(currentUserId, userId);
     followerCondition = true;
   }
-
+  
   return (
     <div className={css.profileContainer}>
       <div className={css.profileBar}>

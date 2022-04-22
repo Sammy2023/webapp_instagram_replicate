@@ -19,18 +19,17 @@ function StoreContextProvider(props) {
   const [posts, setPosts] = useState(
     JSON.parse(localStorage.getItem("posts")) || initialStore.posts
   );
+  console.log(posts);
   const [likes, setLikes] = useState(
     JSON.parse(localStorage.getItem("likes")) || initialStore.likes
   );
   
   useEffect(()=>{
-    console.log(users);
     window.localStorage.setItem('users', JSON.stringify(users));
   }, [users]);
 
   useEffect(() => {
     localStorage.setItem("likes", JSON.stringify(likes));
-    console.log(likes)
   }, [likes]);
 
   const [comments, setComments] = useState(
