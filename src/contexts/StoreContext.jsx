@@ -7,8 +7,8 @@ export const StoreContext = React.createContext();
 
 function StoreContextProvider(props) {
   const [page, setPage] = useState(
-    JSON.parse(localStorage.getItem("currentUserId")) ||
-    'home');
+    JSON.parse(localStorage.getItem("currentUserId")) || "home"
+  );
   const [currentUserId, setCurrentUserId] = useState(
     JSON.parse(localStorage.getItem("currentUserId")) ||
       initialStore.currentUserId
@@ -22,16 +22,6 @@ function StoreContextProvider(props) {
   const [likes, setLikes] = useState(
     JSON.parse(localStorage.getItem("likes")) || initialStore.likes
   );
-  
-  useEffect(()=>{
-    console.log(users);
-    window.localStorage.setItem('users', JSON.stringify(users));
-  }, [users]);
-
-  useEffect(() => {
-    localStorage.setItem("likes", JSON.stringify(likes));
-    console.log(likes)
-  }, [likes]);
 
   const [comments, setComments] = useState(
     JSON.parse(localStorage.getItem("comments")) || initialStore.comments
@@ -39,6 +29,17 @@ function StoreContextProvider(props) {
   const [followers, setFollowers] = useState(
     JSON.parse(localStorage.getItem("followers")) || initialStore.followers
   );
+
+  useEffect(() => {
+    console.log(users);
+    window.localStorage.setItem("users", JSON.stringify(users));
+  }, [users]);
+
+  useEffect(() => {
+    localStorage.setItem("likes", JSON.stringify(likes));
+    console.log(likes);
+  }, [likes]);
+
 
   function addLike(postId) {
     const like = {
@@ -91,7 +92,7 @@ function StoreContextProvider(props) {
     // use filter
     setFollowers(followers.filter((follower) => follower.userId != followerId));
   }
-  
+
   return (
     <StoreContext.Provider
       value={{
@@ -112,7 +113,6 @@ function StoreContextProvider(props) {
     >
       {props.children}
     </StoreContext.Provider>
-
   );
 }
 
