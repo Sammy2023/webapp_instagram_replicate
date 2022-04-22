@@ -17,6 +17,7 @@ function Profile(props) {
 
   const { userId } = useParams();
   const currentUser = users.filter((user) => user.id == userId);
+  console.log(userId);
   const currentPost = posts.filter((post) => post.userId == userId);
   let followerCondition =
     followers.filter(
