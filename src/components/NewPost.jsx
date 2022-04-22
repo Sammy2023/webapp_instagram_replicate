@@ -57,6 +57,7 @@ function NewPost(props) {
     
     //null image
     addPost(photo, desc);
+    navigate("/");
     setError('');
   }
   function handleCancel(){
