@@ -10,7 +10,7 @@ import {
 function Navbar(props){
   
   let {
-    currentUserId, 
+    currentUserId,
   } = useContext(StoreContext);
   
   return (
