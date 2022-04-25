@@ -1,11 +1,29 @@
 import React, { createContext, useState, useEffect } from "react";
 import initialStore from "../util/initialStore.js";
 import uniqueId from "../util/uniqueId.js";
+import {initializeApp} from "firebase/app";
+import {getFirestore} from "firebase/firestore"
 
 // export the context so that other components can import it
 export const StoreContext = createContext();
 
 function StoreContextProvider(props) {
+  const firebaseConfig = {
+      apiKey: "...",
+      authDomain: "...",
+      databaseURL: "...",
+      projectId: "...",
+      storageBucket: "...",
+      messagingSenderId: "...",
+      appId: "..."
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  // get the firestore database instance
+  const db = getFirestore(app);
+  
   const [page, setPage] = useState(
     JSON.parse(localStorage.getItem("page")) ||
     'home');
