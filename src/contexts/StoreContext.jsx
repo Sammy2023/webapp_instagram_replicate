@@ -30,12 +30,17 @@ function StoreContextProvider(props) {
   //}
   // addLikeToFireStore(like);
   
-  async function removeLikeFromFireStore(postId, currentUserId){
-    const likeRef = collection(db, "lieks"); 
+//   async function removeLikeFromFireStore(postId, currentUserId){
+//     const likeRef = collection(db, "likes"); 
     
-    query
-  }
-
+//     const q = query(likeRef, where("userId", "==", currentUserId), where("postId", "==", postId) )
+//     const querySnapshot = await getDocs(q);
+    
+//     querySnapshot.forEach((doc) => deleteDoc(doc.ref));
+    
+//   }
+//   removeLikeFromFireStore(postId, currentUserId);
+  
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
 
