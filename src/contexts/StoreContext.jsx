@@ -1,32 +1,50 @@
 import React, { createContext, useState, useEffect } from "react";
 import initialStore from "../util/initialStore.js";
 import uniqueId from "../util/uniqueId.js";
-import {initializeApp} from "firebase/app";
-import {getFirestore} from "firebase/firestore"
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 // export the context so that other components can import it
 export const StoreContext = createContext();
 
 function StoreContextProvider(props) {
   const firebaseConfig = {
-      apiKey: "...",
-      authDomain: "...",
-      databaseURL: "...",
-      projectId: "...",
-      storageBucket: "...",
-      messagingSenderId: "...",
-      appId: "..."
+    apiKey: "...",
+    authDomain: "...",
+    databaseURL: "...",
+    projectId: "...",
+    storageBucket: "...",
+    messagingSenderId: "...",
+    appId: "...",
   };
+
+  // aync function addLikeToFireStore(Like)
+  // {
+  // try{
+  // const likeRef = collection ( db, likes);
+  // const like = await addDoc(likeRef, like);
+  //
+  // } catch(e) {
+  //   console.error("Error adding like", e)
+  // }
+  //}
+  // addLikeToFireStore(like);
+  
+  async function removeLikeFromFireStore(postId, currentUserId){
+    const likeRef = collection(db, "lieks"); 
+    
+    query
+  }
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
 
   // get the firestore database instance
   const db = getFirestore(app);
-  
+
   const [page, setPage] = useState(
-    JSON.parse(localStorage.getItem("page")) ||
-    'home');
+    JSON.parse(localStorage.getItem("page")) || "home"
+  );
   const [currentUserId, setCurrentUserId] = useState(
     JSON.parse(localStorage.getItem("currentUserId")) ||
       initialStore.currentUserId
@@ -48,27 +66,27 @@ function StoreContextProvider(props) {
   const [followers, setFollowers] = useState(
     JSON.parse(localStorage.getItem("followers")) || initialStore.followers
   );
-  
-   useEffect(()=>{
-    window.localStorage.setItem('users', JSON.stringify(users));
+
+  useEffect(() => {
+    window.localStorage.setItem("users", JSON.stringify(users));
   }, [users]);
 
   useEffect(() => {
     localStorage.setItem("likes", JSON.stringify(likes));
   }, [likes]);
-  
+
   useEffect(() => {
     localStorage.setItem("posts", JSON.stringify(posts));
   }, [posts]);
-  
+
   useEffect(() => {
     localStorage.setItem("comments", JSON.stringify(comments));
   }, [comments]);
-  
+
   useEffect(() => {
     localStorage.setItem("followers", JSON.stringify(followers));
   }, [followers]);
-  
+
   function addLike(postId) {
     const like = {
       userId: currentUserId,
@@ -120,7 +138,7 @@ function StoreContextProvider(props) {
     // use filter
     setFollowers(followers.filter((follower) => follower.userId != followerId));
   }
-  
+
   return (
     <StoreContext.Provider
       value={{
@@ -141,7 +159,6 @@ function StoreContextProvider(props) {
     >
       {props.children}
     </StoreContext.Provider>
-
   );
 }
 
