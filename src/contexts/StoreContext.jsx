@@ -9,19 +9,20 @@ export const StoreContext = createContext();
 
 function StoreContextProvider(props) {
   const firebaseConfig = {
-    apiKey: "...",
-    authDomain: "...",
-    databaseURL: "...",
-    projectId: "...",
-    storageBucket: "...",
-    messagingSenderId: "...",
-    appId: "...",
+    apiKey: "AIzaSyBzJz6UoJ2_TczcZeHXp4ZHhzQPL-gw7T8",
+    authDomain: "mywebproject-cb235.firebaseapp.com",
+    projectId: "mywebproject-cb235",
+    storageBucket: "mywebproject-cb235.appspot.com",
+    messagingSenderId: "716934953972",
+    appId: "1:716934953972:web:d050c758a0346bb292d7a1",
+    measurementId: "G-DZQVL0RMN4",
   };
-
-  const app = initializeApp(firebaseConfig);
+  
+    const app = initializeApp(firebaseConfig);
 
   // get the firestore database instance
   const db = getFirestore(app);
+
 
   // aync function addLikeToFireStore(Like)
   // {
@@ -58,6 +59,12 @@ function StoreContextProvider(props) {
   //   JSON.parse(localStorage.getItem("users")) || initialStore.users
   // );
   const [users, setUsers] = useState([]);
+  
+  useEffect(() => {
+    async function loadUsers(){
+      
+    }
+  }, [users]);
 
   const [posts, setPosts] = useState(
     JSON.parse(localStorage.getItem("posts")) || initialStore.posts
@@ -74,9 +81,7 @@ function StoreContextProvider(props) {
     JSON.parse(localStorage.getItem("followers")) || initialStore.followers
   );
 
-  useEffect(() => {
-    window.localStorage.setItem("users", JSON.stringify(users));
-  }, [users]);
+  
 
   useEffect(() => {
     localStorage.setItem("likes", JSON.stringify(likes));
