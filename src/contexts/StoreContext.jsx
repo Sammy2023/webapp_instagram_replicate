@@ -18,6 +18,11 @@ function StoreContextProvider(props) {
     appId: "...",
   };
 
+  const app = initializeApp(firebaseConfig);
+
+  // get the firestore database instance
+  const db = getFirestore(app);
+
   // aync function addLikeToFireStore(Like)
   // {
   // try{
@@ -29,24 +34,19 @@ function StoreContextProvider(props) {
   // }
   //}
   // addLikeToFireStore(like);
-  
-//   async function removeLikeFromFireStore(postId, currentUserId){
-//     const likeRef = collection(db, "likes"); 
-    
-//     const q = query(likeRef, where("userId", "==", currentUserId), where("postId", "==", postId) )
-//     const querySnapshot = await getDocs(q);
-    
-//     querySnapshot.forEach((doc) => deleteDoc(doc.ref));
-    
-//   }
-//   removeLikeFromFireStore(postId, currentUserId);
-  
+
+  //   async function removeLikeFromFireStore(postId, currentUserId){
+  //     const likeRef = collection(db, "likes");
+
+  //     const q = query(likeRef, where("userId", "==", currentUserId), where("postId", "==", postId) )
+  //     const querySnapshot = await getDocs(q);
+
+  //     querySnapshot.forEach((doc) => deleteDoc(doc.ref));
+
+  //   }
+  //   removeLikeFromFireStore(postId, currentUserId);
+
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-
-  // get the firestore database instance
-  const db = getFirestore(app);
-
   const [page, setPage] = useState(
     JSON.parse(localStorage.getItem("page")) || "home"
   );
@@ -54,9 +54,11 @@ function StoreContextProvider(props) {
     JSON.parse(localStorage.getItem("currentUserId")) ||
       initialStore.currentUserId
   );
-  const [users, setUsers] = useState(
-    JSON.parse(localStorage.getItem("users")) || initialStore.users
-  );
+  // const [users, setUsers] = useState(
+  //   JSON.parse(localStorage.getItem("users")) || initialStore.users
+  // );
+  const [users, setUsers] = useState([]);
+
   const [posts, setPosts] = useState(
     JSON.parse(localStorage.getItem("posts")) || initialStore.posts
   );
