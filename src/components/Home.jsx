@@ -29,7 +29,7 @@ function Home(props) {
       count: postLikes.length,
     }
   }
-  console.log(posts);
+  console.log(currentUserId);
   return (
     !currentUserId ? <Navigate to="/"/> : <div className={css.homeContainer}>
       {postId === undefined ? posts.sort((a,b)=>new Date(b.datetime) - new Date(a.datetime))
