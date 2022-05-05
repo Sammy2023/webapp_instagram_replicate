@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post.jsx'
 import css from "../styles/Home.module.css";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { StoreContext } from '../contexts/StoreContext.jsx';
 
@@ -12,7 +12,7 @@ function Home(props) {
   } = useContext(StoreContext);
   
   const {postId} = useParams();
-  
+  const navigate = useNavigate();
   function findUser(post, users){
     return users.find((user) => user.id === post.userId);
   }
@@ -31,7 +31,7 @@ function Home(props) {
   }
   console.log(posts);
   return (
-    <div className={css.homeContainer}>
+    !currentUserId ? < <div className={css.homeContainer}>
       {postId === undefined ? posts.sort((a,b)=>new Date(b.datetime) - new Date(a.datetime))
        .map(post =>
            <Post 
