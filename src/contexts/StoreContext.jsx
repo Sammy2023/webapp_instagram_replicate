@@ -63,19 +63,39 @@ function StoreContextProvider(props) {
     async function loadUsers(){
       const usersRef = collection(db, "users");
       const querySnapshot = await getDocs(usersRef);
-      const users = querySnapshot.docs.map(docSnapshot => docSnapshot.data);
+      const users = querySnapshot.docs.map((docSnapshot) => {
+        return docSnapshot.data();
+      });
       setUsers(users);
     }
     loadUsers();
-  }, [users]);
+  }, []);
 
   const [posts, setPosts] = useState(
     JSON.parse(localStorage.getItem("posts")) || initialStore.posts
   );
-  console.log(posts);
+  useEffect(() => {
+    async function loadPosts(){
+      const postsRef = collection(db, "posts");
+      const querySnapshot = await getDocs(postsRef);
+      
+      const posts = querySnapshot.docs.map((docSnapshot) => {
+        return docSnapshot.data();
+      });
+      setPosts(posts);
+    }
+    loadPosts();
+  }, []);
+  
+  
   const [likes, setLikes] = useState(
     JSON.parse(localStorage.getItem("likes")) || initialStore.likes
   );
+  
+   useEffect(() => {
+    localStorage.setItem("likes", JSON.stringify(likes));
+  }, [likes]);
+  
 
   const [comments, setComments] = useState(
     JSON.parse(localStorage.getItem("comments")) || initialStore.comments
@@ -84,15 +104,6 @@ function StoreContextProvider(props) {
     JSON.parse(localStorage.getItem("followers")) || initialStore.followers
   );
 
-  
-
-  useEffect(() => {
-    localStorage.setItem("likes", JSON.stringify(likes));
-  }, [likes]);
-
-  useEffect(() => {
-    localStorage.setItem("posts", JSON.stringify(posts));
-  }, [posts]);
 
   useEffect(() => {
     localStorage.setItem("comments", JSON.stringify(comments));
