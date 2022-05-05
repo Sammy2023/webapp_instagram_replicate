@@ -55,15 +55,15 @@ function StoreContextProvider(props) {
     JSON.parse(localStorage.getItem("currentUserId")) ||
       initialStore.currentUserId
   );
-  // const [users, setUsers] = useState(
-  //   JSON.parse(localStorage.getItem("users")) || initialStore.users
-  // );
-  const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users")) || initialStore.users);
+  const [users, setUsers] = useState(
+    JSON.parse(localStorage.getItem("users")) || initialStore.users
+  );
+  // const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users")) || initialStore.users);
   useEffect(() => {
     async function loadUsers(){
       const usersRef = collection(db, "users");
       const querySnapshot = await getDocs(usersRef);
-      const users = querySnapshot.map(docSnapshot => docSnapshot.data);
+      const users = querySnapshot.docs.map(docSnapshot => docSnapshot.data);
       setUsers(users);
     }
     loadUsers();
