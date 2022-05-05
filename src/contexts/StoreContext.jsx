@@ -11,7 +11,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 // export the context so that other components can import it
 export const StoreContext = createContext();
@@ -31,6 +31,38 @@ function StoreContextProvider(props) {
 
   // get the firestore database instance
   const db = getFirestore(app);
+
+  //create an auth object
+  const auth = getAuth(app);
+
+  function login(email, password) {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // find the user ID (see below)
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message; // print these to see what the error is
+        //set current user to null
+      });
+  }
+
+  async function findUserByEmail(email) {
+    // get users collection
+    const usersRef = collection(db, "users");
+    // query the collection to find the user with the email address
+    const q = query(usersRef, where("email", "==", email));
+    // execute the query using getDocs
+    const querySnapshot = await getDocs(q);
+
+    // get the user id from the first document (there should be one matched user)
+    const userId = querySnapshot.docs[0].data().id;
+
+    setCurrentUserId(userId);
+  }
+  findUserByEmail(user.email);
 
   // Initialize Firebase
   const [page, setPage] = useState(
