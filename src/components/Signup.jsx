@@ -1,12 +1,10 @@
 import React, {useState, useContext} from 'react';
-import css from '../styles//Signup.module.css';
-import {
-    useHistory
-  } from "react-router-dom";
-import FileLoader from '../utils/FileLoader.js';
-import {StoreContext} from 'contexts/StoreContext';
+import css from '../styles/Signup.module.css';
+import { useNavigate } from "react-router-dom";
+import FileLoader from '../util/FileLoader.js';
+import {StoreContext} from '../contexts/StoreContext.jsx';
 function Signup(props) {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
@@ -75,7 +73,7 @@ function Signup(props) {
 
     }
     function handleLogin(){
-        history.push('/login');
+        navigate('/login');
     }
     return (
         <div className= {css.container}>

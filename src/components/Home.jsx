@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post.jsx'
 import css from "../styles/Home.module.css";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { StoreContext } from '../contexts/StoreContext.jsx';
 
