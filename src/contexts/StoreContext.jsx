@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import initialStore from "../util/initialStore.js";
 import uniqueId from "../util/uniqueId.js";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, query, where} from "firebase/firestore";
 
 // export the context so that other components can import it
 export const StoreContext = createContext();
@@ -23,28 +23,6 @@ function StoreContextProvider(props) {
   // get the firestore database instance
   const db = getFirestore(app);
 
-  // aync function addLikeToFireStore(Like)
-  // {
-  // try{
-  // const likeRef = collection ( db, likes);
-  // const like = await addDoc(likeRef, like);
-  //
-  // } catch(e) {
-  //   console.error("Error adding like", e)
-  // }
-  //}
-  // addLikeToFireStore(like);
-
-  //   async function removeLikeFromFireStore(postId, currentUserId){
-  //     const likeRef = collection(db, "likes");
-
-  //     const q = query(likeRef, where("userId", "==", currentUserId), where("postId", "==", postId) )
-  //     const querySnapshot = await getDocs(q);
-
-  //     querySnapshot.forEach((doc) => deleteDoc(doc.ref));
-
-  //   }
-  //   removeLikeFromFireStore(postId, currentUserId);
 
   // Initialize Firebase
   const [page, setPage] = useState(
@@ -107,7 +85,7 @@ function StoreContextProvider(props) {
   const [comments, setComments] = useState(
     JSON.parse(localStorage.getItem("comments")) || initialStore.comments
   );
-  
+
   useEffect(() => {
     // localStorage.setItem("likes", JSON.stringify(likes));
     async function loadComments() {
@@ -121,11 +99,11 @@ function StoreContextProvider(props) {
     }
     loadComments();
   }, []);
-  
+
   const [followers, setFollowers] = useState(
     JSON.parse(localStorage.getItem("followers")) || initialStore.followers
   );
-  
+
   useEffect(() => {
     // localStorage.setItem("likes", JSON.stringify(likes));
     async function loadFollowers() {
@@ -148,6 +126,15 @@ function StoreContextProvider(props) {
     };
 
     setLikes(likes.concat(like));
+    async function addLikeToFireStore(like) {
+      try {
+        const likeRef = collection(db, likes);
+        const like = await addDoc(likeRef, like);
+      } catch (e) {
+        console.error("Error adding like", e);
+      }
+    }
+    addLikeToFireStore(like);
   }
 
   function removeLike(postId) {
@@ -156,6 +143,17 @@ function StoreContextProvider(props) {
         (like) => !(like.userId === currentUserId && like.postId === postId)
       )
     );
+      async function removeLikeFromFireStore(postId, currentUserId){
+      const likeRef = collection(db, "likes");
+
+      const q = query(likeRef, where("userId", "==", currentUserId), where("postId", "==", postId) )
+      const querySnapshot = await getDocs(q);
+
+      querySnapshot.forEach((doc) => deleteDoc(doc.ref));
+
+    }
+    removeLikeFromFireStore(postId, currentUserId);
+    
   }
 
   function addComment(postId, text) {
