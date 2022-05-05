@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import initialStore from "../util/initialStore.js";
 import uniqueId from "../util/uniqueId.js";
+import {useNavigate} from 'react-router-dom';
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
@@ -26,7 +27,8 @@ function StoreContextProvider(props) {
     appId: "1:716934953972:web:d050c758a0346bb292d7a1",
     measurementId: "G-DZQVL0RMN4",
   };
-
+  
+  const navigate = useNavigate();
   const app = initializeApp(firebaseConfig);
 
   // get the firestore database instance
@@ -35,43 +37,45 @@ function StoreContextProvider(props) {
   //create an auth object
   const auth = getAuth(app);
 
+  const [currentUserId, setCurrentUserId] = useState(
+    JSON.parse(localStorage.getItem("currentUserId")) ||
+      initialStore.currentUserId
+  );
+
   function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         // find the user ID (see below)
+        async function findUserByEmail(email) {
+          // get users collection
+          const usersRef = collection(db, "users");
+          // query the collection to find the user with the email address
+          const q = query(usersRef, where("email", "==", email));
+          // execute the query using getDocs
+          const querySnapshot = await getDocs(q);
+
+          // get the user id from the first document (there should be one matched user)
+          const userId = querySnapshot.docs[0].data().id;
+
+          setCurrentUserId(userId);
+        }
+        findUserByEmail(user.email);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message; // print these to see what the error is
         //set current user to null
+        setCurrentUserId(null);
       });
   }
-
-  async function findUserByEmail(email) {
-    // get users collection
-    const usersRef = collection(db, "users");
-    // query the collection to find the user with the email address
-    const q = query(usersRef, where("email", "==", email));
-    // execute the query using getDocs
-    const querySnapshot = await getDocs(q);
-
-    // get the user id from the first document (there should be one matched user)
-    const userId = querySnapshot.docs[0].data().id;
-
-    setCurrentUserId(userId);
-  }
-  findUserByEmail(user.email);
 
   // Initialize Firebase
   const [page, setPage] = useState(
     JSON.parse(localStorage.getItem("page")) || "home"
   );
-  const [currentUserId, setCurrentUserId] = useState(
-    JSON.parse(localStorage.getItem("currentUserId")) ||
-      initialStore.currentUserId
-  );
+
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem("users")) || initialStore.users
   );
@@ -302,6 +306,7 @@ function StoreContextProvider(props) {
         addPost,
         addFollower,
         removeFollower,
+        login
       }}
     >
       {props.children}
