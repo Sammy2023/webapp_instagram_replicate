@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import initialStore from "../util/initialStore.js";
 import uniqueId from "../util/uniqueId.js";
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, getDocs} from "firebase/firestore";
 
 // export the context so that other components can import it
 export const StoreContext = createContext();
@@ -62,8 +62,10 @@ function StoreContextProvider(props) {
   
   useEffect(() => {
     async function loadUsers(){
-      
+      const usersRef = collection(db, "users");
+      const querySnapshot = getDocs(usersRef);
     }
+    loadUsers();
   }, [users]);
 
   const [posts, setPosts] = useState(
