@@ -63,7 +63,8 @@ function StoreContextProvider(props) {
   useEffect(() => {
     async function loadUsers(){
       const usersRef = collection(db, "users");
-      const querySnapshot = getDocs(usersRef);
+      const querySnapshot = await getDocs(usersRef);
+      const users = querySnapshot.map(docSnapshot => docSnap)
     }
     loadUsers();
   }, [users]);
