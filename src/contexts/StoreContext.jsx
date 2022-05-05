@@ -229,7 +229,9 @@ function StoreContextProvider(props) {
 
   function removeFollower(userId, followerId) {
     // use filter
-    setFollowers(followers.filter((follower) => follower.userId == userId && follower.followerId == followerId));
+    console.log(followers);
+    setFollowers(followers.filter((follower) => follower.userId != userId && follower.followerId == followerId)));
+    console.log(followers);
     
         async function removeFollowerFromFireStore(followerId, currentUserId) {
       const followerRef = collection(db, "followers");

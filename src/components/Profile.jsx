@@ -20,6 +20,8 @@ function Profile(props) {
   console.log(userId);
   const currentPost = posts.filter((post) => post.userId == userId);
   let followerCondition =
+    // if judy is following the userId person -> true 
+    // if judy isn't following the userId person -> false
     followers.filter(
       (follower) =>
         follower.followerId == currentUserId && follower.userId == userId
@@ -34,12 +36,12 @@ function Profile(props) {
 
   function followBtnToggle() {
     addFollower(currentUserId, userId);
-    followerCondition = true;
+    console.log(followerCondition);
   }
 
   function unfollowBtnToggle() {
-    removeFollower(currentUserId, userId);
-    followerCondition = true;
+    removeFollower(userId, currentUserId);
+    console.log(followerCondition);
   }
   
   return (
