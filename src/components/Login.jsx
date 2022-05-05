@@ -25,6 +25,7 @@ function Login() {
     setEmail("");
     setPassword("");
     setError("");
+    navigate("/")
   }
   function handleSignup() {
     navigate("/signup");
