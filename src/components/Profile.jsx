@@ -1,7 +1,7 @@
 import React from "react";
 import css from "../styles/Profile.module.css";
 import PostThumbnail from "./PostThumbnail.jsx";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Navigate} from "react-router-dom";
 import { useContext } from "react";
 import { StoreContext } from "../contexts/StoreContext.jsx";
 
@@ -45,6 +45,7 @@ function Profile(props) {
   }
   
   return (
+    !currentUser?<Navigate to="/login"/>:
     <div className={css.profileContainer}>
       <div className={css.profileBar}>
         <img src={currentUser[0].photo} />

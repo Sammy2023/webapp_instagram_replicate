@@ -8,6 +8,7 @@ import Post from "./components/Post.jsx";
 import NewPost from "./components/NewPost.jsx";
 import Profile from "./components/Profile.jsx";
 import Login from "./components/Login.jsx";
+import Signup from "./components/Signup.jsx";
 import initialStore from './util/initialStore.js';
 import { useState } from 'react';
 import uniqueId from './util/uniqueId.js';

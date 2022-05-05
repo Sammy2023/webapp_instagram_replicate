@@ -4,7 +4,7 @@ import FileLoader from '../util/FileLoader.js';
 import { useContext } from 'react';
 import { StoreContext } from '../contexts/StoreContext.jsx';
 import {
-  useNavigate
+  useNavigate, Navigate
 } from "react-router-dom";
 
 function NewPost(props) {
@@ -13,7 +13,7 @@ function NewPost(props) {
   const [photo, setPhoto] = useState(null);
   const [error, setError] = useState(''); // to show an error message
   const navigate = useNavigate();
-  let {addPost} = useContext(StoreContext);
+  let {addPost, currentUserId} = useContext(StoreContext);
 
   function handleFileDragEnter(e){
     setDragging(true);
@@ -65,6 +65,7 @@ function NewPost(props) {
     navigate("/");
   }
   return (
+    !currentUserId?<Navigate to="/login"/> : 
     <div className={css.newPostContainer}>
         <div className={css.photo}>
           {!photo?  <div className={css.message}>Drop your image</div>:
