@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import initialStore from "../util/initialStore.js";
 import uniqueId from "../util/uniqueId.js";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs} from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 // export the context so that other components can import it
 export const StoreContext = createContext();
@@ -17,12 +17,11 @@ function StoreContextProvider(props) {
     appId: "1:716934953972:web:d050c758a0346bb292d7a1",
     measurementId: "G-DZQVL0RMN4",
   };
-  
-    const app = initializeApp(firebaseConfig);
+
+  const app = initializeApp(firebaseConfig);
 
   // get the firestore database instance
   const db = getFirestore(app);
-
 
   // aync function addLikeToFireStore(Like)
   // {
@@ -60,7 +59,7 @@ function StoreContextProvider(props) {
   );
   // const [users, setUsers] = useState(JSON.parse(localStorage.getItem("users")) || initialStore.users);
   useEffect(() => {
-    async function loadUsers(){
+    async function loadUsers() {
       const usersRef = collection(db, "users");
       const querySnapshot = await getDocs(usersRef);
       const users = querySnapshot.docs.map((docSnapshot) => {
@@ -75,10 +74,10 @@ function StoreContextProvider(props) {
     JSON.parse(localStorage.getItem("posts")) || initialStore.posts
   );
   useEffect(() => {
-    async function loadPosts(){
+    async function loadPosts() {
       const postsRef = collection(db, "posts");
       const querySnapshot = await getDocs(postsRef);
-      
+
       const posts = querySnapshot.docs.map((docSnapshot) => {
         return docSnapshot.data();
       });
@@ -86,32 +85,60 @@ function StoreContextProvider(props) {
     }
     loadPosts();
   }, []);
-  
-  
+
   const [likes, setLikes] = useState(
     JSON.parse(localStorage.getItem("likes")) || initialStore.likes
   );
-  
-   useEffect(() => {
-    localStorage.setItem("likes", JSON.stringify(likes));
-  }, [likes]);
-  
+
+  useEffect(() => {
+    // localStorage.setItem("likes", JSON.stringify(likes));
+    async function loadLikes() {
+      const likesRef = collection(db, "likes");
+      const querySnapshot = await getDocs(likesRef);
+
+      const likes = querySnapshot.docs.map((docSnapshot) => {
+        return docSnapshot.data();
+      });
+      setLikes(likes);
+    }
+    loadLikes();
+  }, []);
 
   const [comments, setComments] = useState(
     JSON.parse(localStorage.getItem("comments")) || initialStore.comments
   );
+  
+  useEffect(() => {
+    // localStorage.setItem("likes", JSON.stringify(likes));
+    async function loadComments() {
+      const commentsRef = collection(db, "comments");
+      const querySnapshot = await getDocs(commentsRef);
+
+      const comments = querySnapshot.docs.map((docSnapshot) => {
+        return docSnapshot.data();
+      });
+      setComments(comments);
+    }
+    loadComments();
+  }, []);
+  
   const [followers, setFollowers] = useState(
     JSON.parse(localStorage.getItem("followers")) || initialStore.followers
   );
-
-
+  
   useEffect(() => {
-    localStorage.setItem("comments", JSON.stringify(comments));
-  }, [comments]);
+    // localStorage.setItem("likes", JSON.stringify(likes));
+    async function loadFollowers() {
+      const followersRef = collection(db, "followers");
+      const querySnapshot = await getDocs(followersRef);
 
-  useEffect(() => {
-    localStorage.setItem("followers", JSON.stringify(followers));
-  }, [followers]);
+      const followers = querySnapshot.docs.map((docSnapshot) => {
+        return docSnapshot.data();
+      });
+      setFollowers(followers);
+    }
+    loadFollowers();
+  }, []);
 
   function addLike(postId) {
     const like = {
