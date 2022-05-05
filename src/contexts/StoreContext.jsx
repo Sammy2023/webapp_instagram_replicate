@@ -2,7 +2,15 @@ import React, { createContext, useState, useEffect } from "react";
 import initialStore from "../util/initialStore.js";
 import uniqueId from "../util/uniqueId.js";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, addDoc, deleteDoc, query, where} from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  query,
+  where,
+} from "firebase/firestore";
 
 // export the context so that other components can import it
 export const StoreContext = createContext();
@@ -22,7 +30,6 @@ function StoreContextProvider(props) {
 
   // get the firestore database instance
   const db = getFirestore(app);
-
 
   // Initialize Firebase
   const [page, setPage] = useState(
@@ -143,17 +150,19 @@ function StoreContextProvider(props) {
         (like) => !(like.userId === currentUserId && like.postId === postId)
       )
     );
-      async function removeLikeFromFireStore(postId, currentUserId){
+    async function removeLikeFromFireStore(postId, currentUserId) {
       const likeRef = collection(db, "likes");
 
-      const q = query(likeRef, where("userId", "==", currentUserId), where("postId", "==", postId) )
+      const q = query(
+        likeRef,
+        where("userId", "==", currentUserId),
+        where("postId", "==", postId)
+      );
       const querySnapshot = await getDocs(q);
 
       querySnapshot.forEach((doc) => deleteDoc(doc.ref));
-
     }
     removeLikeFromFireStore(postId, currentUserId);
-    
   }
 
   function addComment(postId, text) {
@@ -165,6 +174,16 @@ function StoreContextProvider(props) {
     };
 
     setComments(comments.concat(comment));
+
+    async function addCommentToFireStore(comment) {
+      try {
+        const commentRef = collection(db, comments);
+        const comment = await addDoc(commentRef, comment);
+      } catch (e) {
+        console.error("Error adding comment", e);
+      }
+    }
+    addCommentToFireStore(comment);
   }
 
   function addPost(photo, desc) {
@@ -177,17 +196,55 @@ function StoreContextProvider(props) {
     };
 
     setPosts(posts.concat(post));
+    async function addPostToFireStore(post) {
+      try {
+        const postRef = collection(db, posts);
+        const post = await addDoc(postRef, post);
+      } catch (e) {
+        console.error("Error adding post", e);
+      }
+    }
+    addPostToFireStore(post);
     setPage("home");
   }
 
   function addFollower(userId, followerId) {
     // use concat
-    setFollowers(followers.concat({ userId, followerId }));
+    const follower = {
+      userId: userId, 
+      followerId: followerId,
+    }
+    setFollowers(followers.concat(follower));
+    async function addFollowerToFireStore(follower) {
+      try {
+        const followerRef = collection(db, followers);
+        const follower = await addDoc(followerRef, follower);
+      } catch (e) {
+        console.error("Error adding follower", e);
+      }
+    }
+    addFollowerToFireStore(follower);
+    setPage("home"); 
   }
 
   function removeFollower(userId, followerId) {
     // use filter
     setFollowers(followers.filter((follower) => follower.userId != followerId));
+        async function removeFollowerFromFireStore(postId, currentUserId) {
+      const likeRef = collection(db, "likes");
+
+      const q = query(
+        likeRef,
+        where("userId", "==", currentUserId),
+        where("postId", "==", postId)
+      );
+      const querySnapshot = await getDocs(q);
+
+      querySnapshot.forEach((doc) => deleteDoc(doc.ref));
+    }
+    removeFollowerFromFireStore(postId, currentUserId);
+
+    
   }
 
   return (
