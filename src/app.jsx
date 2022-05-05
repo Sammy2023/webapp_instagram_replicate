@@ -7,6 +7,7 @@ import Explore from "./components/Explore.jsx";
 import Post from "./components/Post.jsx";
 import NewPost from "./components/NewPost.jsx";
 import Profile from "./components/Profile.jsx";
+import Login from "./components/Login.jsx";
 import initialStore from './util/initialStore.js';
 import { useState } from 'react';
 import uniqueId from './util/uniqueId.js';
@@ -65,6 +66,7 @@ export default function App (){
                       */
                       />
                   }/>
+                  <Route path="login" element={<Login />}></Route>
                 </Routes>
             </main>
             <Navbar

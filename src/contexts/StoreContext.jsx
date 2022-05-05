@@ -60,6 +60,7 @@ function StoreContextProvider(props) {
           const userId = querySnapshot.docs[0].data().id;
 
           setCurrentUserId(userId);
+          navigate("/");
         }
         findUserByEmail(user.email);
       })
