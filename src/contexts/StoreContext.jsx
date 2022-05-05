@@ -101,8 +101,9 @@ function StoreContextProvider(props) {
         // TODO: add a user to the app state (refer to addLike)
         
         // TODO: set the user as a current user (use setCurrentUserUd and user.id)
-
+        setCurrentUserId(user.id);
         // TODO:route to home (use navigate)
+        navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -347,6 +348,7 @@ function StoreContextProvider(props) {
         addFollower,
         removeFollower,
         login,
+        signup
       }}
     >
       {props.children}
