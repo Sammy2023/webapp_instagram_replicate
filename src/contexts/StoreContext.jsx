@@ -11,6 +11,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 // export the context so that other components can import it
 export const StoreContext = createContext();
@@ -211,9 +212,9 @@ function StoreContextProvider(props) {
   function addFollower(userId, followerId) {
     // use concat
     const follower = {
-      userId: userId, 
+      userId: userId,
       followerId: followerId,
-    }
+    };
     setFollowers(followers.concat(follower));
     async function addFollowerToFireStore(follower) {
       try {
@@ -224,30 +225,33 @@ function StoreContextProvider(props) {
       }
     }
     addFollowerToFireStore(follower);
-    setPage("home"); 
+    setPage("home");
   }
 
   function removeFollower(userId, followerId) {
     // use filter
     console.log(followers);
-    setFollowers(followers.filter((follower) => follower.userId != userId && follower.followerId == followerId)));
+    setFollowers(
+      followers.filter(
+        (follower) =>
+          !(follower.userId == userId && follower.followerId == followerId)
+      )
+    );
     console.log(followers);
-    
-        async function removeFollowerFromFireStore(followerId, currentUserId) {
+
+    async function removeFollowerFromFireStore(userId, followerId) {
       const followerRef = collection(db, "followers");
 
       const q = query(
-        followerRef, 
-        where("userId", "==", currentUserId),
-        where("followerId", "==", followerId)
+        followerRef,
+        where("userId", "!=", userId),
+        where("followerId", "!=", followerId)
       );
       const querySnapshot = await getDocs(q);
 
       querySnapshot.forEach((doc) => deleteDoc(doc.ref));
     }
-    removeFollowerFromFireStore(followerId, currentUserId);
-
-    
+    removeFollowerFromFireStore(userId, followerId);
   }
 
   return (

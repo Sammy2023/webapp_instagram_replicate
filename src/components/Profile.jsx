@@ -35,7 +35,7 @@ function Profile(props) {
   );
 
   function followBtnToggle() {
-    addFollower(currentUserId, userId);
+    addFollower(userId, currentUserId);
     console.log(followerCondition);
   }
 
