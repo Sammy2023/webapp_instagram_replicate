@@ -229,20 +229,21 @@ function StoreContextProvider(props) {
 
   function removeFollower(userId, followerId) {
     // use filter
-    setFollowers(followers.filter((follower) => follower.userId != followerId));
-        async function removeFollowerFromFireStore(postId, currentUserId) {
-      const likeRef = collection(db, "likes");
+    setFollowers(followers.filter((follower) => follower.userId == userId && follower.followerId == followerId));
+    
+        async function removeFollowerFromFireStore(followerId, currentUserId) {
+      const followerRef = collection(db, "followers");
 
       const q = query(
-        likeRef,
+        followerRef, 
         where("userId", "==", currentUserId),
-        where("postId", "==", postId)
+        where("followerId", "==", followerId)
       );
       const querySnapshot = await getDocs(q);
 
       querySnapshot.forEach((doc) => deleteDoc(doc.ref));
     }
-    removeFollowerFromFireStore(postId, currentUserId);
+    removeFollowerFromFireStore(followerId, currentUserId);
 
     
   }
