@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import initialStore from "../util/initialStore.js";
 import uniqueId from "../util/uniqueId.js";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
@@ -12,7 +12,11 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 
 // export the context so that other components can import it
 export const StoreContext = createContext();
@@ -27,7 +31,7 @@ function StoreContextProvider(props) {
     appId: "1:716934953972:web:d050c758a0346bb292d7a1",
     measurementId: "G-DZQVL0RMN4",
   };
-  
+
   const navigate = useNavigate();
   const app = initializeApp(firebaseConfig);
 
@@ -69,6 +73,41 @@ function StoreContextProvider(props) {
         const errorMessage = error.message; // print these to see what the error is
         //set current user to null
         setCurrentUserId(null);
+      });
+  }
+
+  function signup(email, password, bio, id, name, photo) {
+    const user = {
+      email,
+      id,
+      name,
+      bio,
+      photo,
+    };
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // TODO: add a user to the firestore database (refer to addLikeToFirestore)
+        async function addUserToFireStore(user) {
+          try {
+            const userRef = collection(db, users);
+            const user = await addDoc(userRef, user);
+          } catch (e) {
+            console.error("Error adding user", e);
+          }
+        }
+        addUserToFireStore(user);
+        // TODO: add a user to the app state (refer to addLike)
+        
+        // TODO: set the user as a current user (use setCurrentUserUd and user.id)
+
+        // TODO:route to home (use navigate)
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
       });
   }
 
@@ -307,7 +346,7 @@ function StoreContextProvider(props) {
         addPost,
         addFollower,
         removeFollower,
-        login
+        login,
       }}
     >
       {props.children}
